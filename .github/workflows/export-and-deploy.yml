@@ -6,7 +6,6 @@ on: push
 env:
   GODOT_VERSION: 4.2.2
   EXPORT_NAME: cellular-conquest
-  PROJECT_PATH: cellular-conquest
   ITCH_USERNAME: "Quantum Forge Games"
   ITCH_GAME_ID: cellular-conquest
 
@@ -39,7 +38,6 @@ jobs:
       - name: Web Build
         run: |
           mkdir -v -p build/web
-          cd $PROJECT_PATH
           godot --headless --verbose --export-release "HTML5" ../build/web/index.html
 
       # Uploads the built web project as an artifact
