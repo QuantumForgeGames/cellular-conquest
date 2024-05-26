@@ -56,6 +56,8 @@ jobs:
   deploy:
     name: Upload to Itch
     runs-on: ubuntu-latest
+    # Ensure this job runs after the export-web job
+    needs: export-web
     strategy:
       fail-fast: true
       matrix:
