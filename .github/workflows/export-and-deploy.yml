@@ -1,0 +1,84 @@
+name: "Export and Deploy to Itch.io"
+
+# Controls when the workflow will run; triggers the workflow on push
+on: push
+
+env:
+  GODOT_VERSION: 4.2.2
+  EXPORT_NAME: cellular-conquest
+  PROJECT_PATH: cellular-conquest
+  ITCH_USERNAME: "Quantum Forge Games"
+  ITCH_GAME_ID: cellular-conquest
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Job for exporting the project as a web (HTML5) build
+  export-web:
+    name: Web Export
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+    # Docker image to export Godot Engine games
+    container:
+      image: barichello/godot-ci:4.2.2
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+
+      # Sets up the Godot export templates directory
+      - name: Setup Godot Export Templates
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      
+      # Builds the project for HTML5 (web)
+      - name: Web Build
+        run: |
+          mkdir -v -p build/web
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "HTML5" ../build/web/index.html
+
+      # Uploads the built web project as an artifact
+      - name: Upload Web Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: web
+          path: build/web
+
+      # Installs rsync, a utility for efficiently transferring and synchronizing files
+      - name: Install rsync
+        run: |
+          apt-get update && apt-get install -y rsync
+
+  # Job for deploying the project to Itch.io
+  deploy:
+    name: Upload to Itch
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        channel:
+          - windows
+          - web
+    steps:
+      # Downloads the artifact produced by the previous jobs
+      - name: Download Artifact
+        uses: actions/download-artifact@v2.0.8
+        with:
+          name: ${{ matrix.channel }}
+          path: build/${{ matrix.channel }}
+
+      # Publishes the build to Itch.io using the butler tool
+      - name: Publish to Itch.io
+        uses: KikimoraGames/itch-publish@v0.0.3
+        with:
+          butlerApiKey: ${{ secrets.BUTLER_API_KEY }}
+          gameData: ./build/${{ matrix.channel }}
+          itchUsername: ${{ env.ITCH_USERNAME }}
+          itchGameId: ${{ env.ITCH_GAME_ID }}
+          buildChannel: ${{ matrix.channel }}
+          buildNumber: ${{ github.run_number }}
