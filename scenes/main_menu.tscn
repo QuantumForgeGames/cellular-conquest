@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbcgyhfuawphf"]
+[gd_scene load_steps=7 format=3 uid="uid://bbcgyhfuawphf"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_eworb"]
+[ext_resource type="Texture2D" uid="uid://f1ooirglqf2o" path="res://assets/main_menu_background.png" id="2_pad0y"]
+[ext_resource type="Texture2D" uid="uid://dvf3s5nqapjxb" path="res://assets/play_button_normal.png" id="3_ma8a7"]
+[ext_resource type="Texture2D" uid="uid://ba0yfkh7g78pw" path="res://assets/play_button_hovered.png" id="4_h7285"]
+[ext_resource type="Texture2D" uid="uid://baobrkf7ci5c3" path="res://assets/settings_button_normal.png" id="5_j503j"]
+[ext_resource type="Texture2D" uid="uid://bnst3rea68l76" path="res://assets/settings_button_hovered.png" id="6_cqy1y"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -11,37 +16,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eworb")
 
-[node name="TemporaryRect" type="ColorRect" parent="."]
+[node name="BackgroundRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.886275, 0.917647, 0.901961, 1)
+texture = ExtResource("2_pad0y")
+expand_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="PlayButton" type="TextureButton" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.579861
+anchor_top = 0.828704
+anchor_right = 0.579861
+anchor_bottom = 0.828704
+offset_left = -532.0
+offset_top = -284.0
+offset_right = -271.0
+offset_bottom = -122.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_ma8a7")
+texture_hover = ExtResource("4_h7285")
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="SettingsButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 348.0
+offset_right = 814.0
+offset_bottom = 610.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("5_j503j")
+texture_hover = ExtResource("6_cqy1y")
+metadata/_edit_use_anchors_ = true
 
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Play"
-
-[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Settings"
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
