@@ -1,7 +1,10 @@
 name: "Export and Deploy to Itch.io"
 
 # Controls when the workflow will run; triggers the workflow on push
-on: push
+on: 
+  push:
+    branches:
+      - '**' # Trigger on push to any branch
 
 env:
   GODOT_VERSION: 4.2.2
@@ -73,6 +76,8 @@ jobs:
     runs-on: ubuntu-latest
     # Ensure this job runs after the export-web job
     needs: export-web
+    # Only run this job on main branch
+    if: github.ref == 'refs/heads/main'  
     strategy:
       fail-fast: true
       matrix:
