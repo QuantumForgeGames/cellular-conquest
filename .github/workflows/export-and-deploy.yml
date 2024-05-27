@@ -28,17 +28,28 @@ jobs:
         with:
           lfs: true
 
+      # Debugging step to list directory contents
+      - name: List directory contents
+        run: ls -la 
+          
       # Sets up the Godot export templates directory
       - name: Setup Godot Export Templates
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates/
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
       
+      # Debugging step to check the project path 
+      - name: Check project path
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Project path: ${PROJECT_PATH}"
+          ls -la ${PROJECT_PATH}
+
       # Builds the project for HTML5 (web)
       - name: Web Build
         run: |
           mkdir -v -p build/web
-          godot --headless --verbose --export-release "HTML5" ../build/web/index.html
+          godot --headless --verbose --export-release "HTML5" build/web/index.html
 
       # Uploads the built web project as an artifact
       - name: Upload Web Artifact
