@@ -34,6 +34,11 @@ dash={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Organisms"
+2d_physics/layer_2="Projectiles"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

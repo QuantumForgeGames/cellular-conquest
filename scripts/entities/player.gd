@@ -12,6 +12,10 @@ extends CharacterBody2D
 var dash_direction := Vector2.ZERO
 var is_dashing: bool = false
 
+# Projectile ability
+@export var PROJECTILE_SPEED := 1000.
+var projectile_scene := preload("res://scenes/entities/projectile.tscn")
+
 func _physics_process(_delta: float) -> void:
 	if is_dashing:
 		velocity = DASH_SPEED * dash_direction
@@ -26,6 +30,12 @@ func _input(_event: InputEvent) -> void:
 		var dir = (get_global_mouse_position() - global_position)
 		dash_direction = (dir.normalized()) if (dir.length() > DASH_DEADZONE) else Vector2.ZERO
 		get_tree().create_timer(DASH_DURATION).timeout.connect(toggle_dash)
+	
+	if Input.is_action_just_pressed("shoot"):
+		var projectile = projectile_scene.instantiate()
+		projectile.global_position = global_position
+		projectile.velocity = PROJECTILE_SPEED * (get_global_mouse_position() - global_position).normalized()
+		add_sibling(projectile)
 		
 func toggle_dash():
 	is_dashing = not is_dashing
