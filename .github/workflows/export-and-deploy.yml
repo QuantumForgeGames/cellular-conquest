@@ -6,7 +6,7 @@ on: push
 env:
   GODOT_VERSION: 4.2.2
   EXPORT_NAME: cellular-conquest
-  ITCH_USERNAME: "Quantum Forge Games"
+  ITCH_USERNAME: quantum-forge-games
   ITCH_GAME_ID: cellular-conquest
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -34,7 +34,7 @@ jobs:
 
       # Debugging step to show Itchio Username
       - name: Check Itchio Name
-        run: echo "${{ env.ITCH_USERNAME }}"
+        run: echo ${{ env.ITCH_USERNAME }}
           
       # Sets up the Godot export templates directory
       - name: Setup Godot Export Templates
@@ -92,7 +92,7 @@ jobs:
         with:
           butlerApiKey: ${{ secrets.BUTLER_API_KEY }}
           gameData: ./build/${{ matrix.channel }}
-          itchUsername: "${{ env.ITCH_USERNAME }}"
+          itchUsername: ${{ env.ITCH_USERNAME }}
           itchGameId: ${{ env.ITCH_GAME_ID }}
           buildChannel: ${{ matrix.channel }}
           buildNumber: ${{ github.run_number }}
