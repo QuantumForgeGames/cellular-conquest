@@ -27,6 +27,8 @@ shape = SubResource("CircleShape2D_swsho")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Hitbox" parent="." instance=ExtResource("4_xylr6")]
+SIZE_SCALE_FACTOR = 0.05
+SIZE_TWEEN_RATE = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_7gxpx")

@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cy6iv24ne4unh" path="res://scenes/entities/hitbox.tscn" id="4_mwnrd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8a4gp"]
-radius = 46.0109
+radius = 143.349
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2xmvq"]
-radius = 48.0416
+[sub_resource type="CircleShape2D" id="CircleShape2D_45uan"]
+radius = 140.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 0
@@ -18,7 +18,7 @@ script = ExtResource("1_d2sxg")
 
 [node name="BodySprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_s0dqk")
 
 [node name="FaceSprite" type="Sprite2D" parent="BodySprite"]
@@ -29,11 +29,10 @@ shape = SubResource("CircleShape2D_8a4gp")
 
 [node name="Hitbox" parent="." instance=ExtResource("4_mwnrd")]
 collision_layer = 3
-BASE_SIZE = 0.25
-SIZE_SCALE_FACTOR = 0.2
-SIZE_TWEEN_RATE = 0.1
+SIZE_TWEEN_RATE = 0.05
+health = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_2xmvq")
+shape = SubResource("CircleShape2D_45uan")
 
 [connection signal="damage_recieved" from="Hitbox" to="." method="_on_hitbox_damage_recieved"]
