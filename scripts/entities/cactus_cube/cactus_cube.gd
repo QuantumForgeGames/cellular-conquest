@@ -1,11 +1,9 @@
-extends CharacterBody2D
-
-@export var initial_health: int = 10
+extends Organism
 
 func _ready() -> void:
 	$Hitbox.health = initial_health
 
-func on_absorbed():
+func on_absorbed() -> void:
 	queue_free()
 
 func _on_hitbox_damage_recieved() -> void:
