@@ -46,5 +46,8 @@ func toggle_dash() -> void:
 	is_dashing = not is_dashing
 
 func on_absorbed() -> void:
-	queue_free()
+	print("Absorbed! (Debug)")
+	#EventManager.game_over.emit()
+	#$Camera2D.reparent(get_parent())
+	#queue_free()
 	
