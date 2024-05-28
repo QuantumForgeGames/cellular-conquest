@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://m5wm72uy65ft"]
+
+[ext_resource type="Script" path="res://scripts/menus/settings_menu.gd" id="1_eb81b"]
+[ext_resource type="Texture2D" uid="uid://dhbyt5q3od125" path="res://assets/art/backgrounds/settings_background.png" id="2_v788d"]
+[ext_resource type="Texture2D" uid="uid://70hfkguxc2si" path="res://assets/art/buttons/back_button_normal.png" id="3_hhcoe"]
+[ext_resource type="Texture2D" uid="uid://dnlg31rvf6vlj" path="res://assets/art/buttons/back_button_hover.png" id="4_l1fe8"]
+
+[node name="Settings Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eb81b")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v788d")
+expand_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -879.0
+offset_top = -438.0
+offset_right = -661.0
+offset_bottom = -268.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_hhcoe")
+texture_hover = ExtResource("4_l1fe8")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

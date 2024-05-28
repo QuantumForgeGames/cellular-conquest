@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Cellular Conquest"
-run/main_scene="res://scripts/levels/world.tscn"
+run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/art/entities/player/icon.svg"
+<<<<<<<HEADconfig/features=PackedStringArray("4.2", "GL Compatibility")
 
 [display]
 
