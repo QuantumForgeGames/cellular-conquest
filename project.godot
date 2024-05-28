@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/art/entities/player/icon.svg"
 <<<<<<<HEADconfig/features=PackedStringArray("4.2", "GL Compatibility")
 
+[autoload]
+
+EventManager="*res://scripts/globals/event_manager.gd"
+
 [display]
 
 window/size/viewport_width=1920
