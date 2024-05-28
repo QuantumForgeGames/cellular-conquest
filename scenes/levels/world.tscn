@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://7pc3dynyj3ax"]
+
+[ext_resource type="Shader" path="res://assets/shaders/water_effect.gdshader" id="1_jv6e6"]
+[ext_resource type="Texture2D" uid="uid://dv2unbnfjqv3r" path="res://assets/gradients/water_effect_color_ramp.tres" id="2_c85ou"]
+[ext_resource type="Script" path="res://scripts/entities/water_effect.gd" id="3_xnoyl"]
+[ext_resource type="PackedScene" uid="uid://c6wl8krh5vc0f" path="res://scenes/entities/enemy.tscn" id="4_4ff1c"]
+[ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="5_imybo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_civoq"]
+shader = ExtResource("1_jv6e6")
+shader_parameter/color_ramp = ExtResource("2_c85ou")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gclqv"]
+size = Vector2(1920, 1080)
+
+[node name="Main" type="Node"]
+
+[node name="BackgroundWaterEffect" type="Sprite2D" parent="." node_paths=PackedStringArray("_Player")]
+material = SubResource("ShaderMaterial_civoq")
+texture = SubResource("PlaceholderTexture2D_gclqv")
+script = ExtResource("3_xnoyl")
+_Player = NodePath("../Player")
+
+[node name="Enemy" parent="." instance=ExtResource("4_4ff1c")]
+position = Vector2(1315, 292)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_4ff1c")]
+position = Vector2(1445, 662)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_4ff1c")]
+position = Vector2(1043, 922)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_4ff1c")]
+position = Vector2(427, 646)
+
+[node name="Enemy5" parent="." instance=ExtResource("4_4ff1c")]
+position = Vector2(560, 278)
+
+[node name="Player" parent="." instance=ExtResource("5_imybo")]
+position = Vector2(853, 575)
