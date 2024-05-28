@@ -28,6 +28,7 @@ func on_damage_recieved(val: int):
 	
 func _on_area_entered(area: Area2D) -> void:
 	if entity is Player and area is Hitbox:
+		var winner = self if (entity.scale.x > area.entity.scale.x) else area
 		var loser = self if (entity.scale.x <= area.entity.scale.x) else area
-		health += loser.health
+		winner.health += loser.health
 		loser.entity.on_absorbed()
