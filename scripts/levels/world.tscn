@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://7pc3dynyj3ax"]
+[gd_scene load_steps=8 format=3 uid="uid://7pc3dynyj3ax"]
 
 [ext_resource type="Shader" path="res://assets/shaders/water_effect.gdshader" id="1_otd8x"]
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
 [ext_resource type="Texture2D" uid="uid://dv2unbnfjqv3r" path="res://assets/gradients/water_effect_color_ramp.tres" id="2_tbaoy"]
+[ext_resource type="Script" path="res://scripts/entities/water_effect.gd" id="3_d1dyl"]
 [ext_resource type="PackedScene" uid="uid://c6wl8krh5vc0f" path="res://scenes/entities/enemy.tscn" id="3_uxm3w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_civoq"]
@@ -14,16 +15,11 @@ size = Vector2(1920, 1080)
 
 [node name="Main" type="Node"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2(960, 540)
-transform = Transform2D(1, 0, 0, 1, 960, 540)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 1080)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="BackgroundWaterEffect" type="Sprite2D" parent="." node_paths=PackedStringArray("_Player")]
 material = SubResource("ShaderMaterial_civoq")
 texture = SubResource("PlaceholderTexture2D_gclqv")
+script = ExtResource("3_d1dyl")
+_Player = NodePath("../Player")
 
 [node name="Enemy" parent="." instance=ExtResource("3_uxm3w")]
 position = Vector2(1315, 292)
