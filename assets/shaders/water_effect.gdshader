@@ -1,6 +1,11 @@
 shader_type canvas_item;
 
 uniform sampler2D color_ramp;
+varying vec2 world_position;
+
+void vertex() {
+    world_position = (CANVAS_MATRIX * vec4(VERTEX, 1.0, 1.0)).xy;
+}
 
 vec2 random(vec2 uv) {
 	return vec2(fract(sin(dot(uv.xy,
@@ -32,7 +37,9 @@ float worley(vec2 uv, float columns, float rows) {
 
 void fragment() {
     
-	float worley = worley(UV + TIME * 0.08f, 3.0, 5.0);
+	//float worley = worley(UV + TIME * 0.08f, 3.0, 5.0);
+    float scale = 0.0025f;
+    float worley = worley(world_position * scale, 3.0, 5.0);
     vec4 color = texture(color_ramp, vec2(worley));
 
 	//COLOR = vec4(vec3(color), 1.0);
@@ -40,12 +47,3 @@ void fragment() {
     COLOR = color;
 }
 
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
