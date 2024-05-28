@@ -4,12 +4,13 @@ uniform sampler2D color_ramp;
 varying vec2 world_position;
 
 void vertex() {
-    world_position = (CANVAS_MATRIX * vec4(VERTEX, 1.0, 1.0)).xy;
+    world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0, 1.0)).xy;
 }
 
 vec2 random(vec2 uv) {
 	return vec2(fract(sin(dot(uv.xy,
-		vec2(12.9898,78.233))) * 43758.5453123)) * clamp(0.75+((sin(TIME) +0.0) /4.0f), 0.5, 1.0);
+		vec2(12.9898,78.233))) * 43758.5453123)) * clamp(0.75+((sin(TIME)) /4.0f), 0.5, 1.0);
+        //vec2(12.9898,78.233))) * 43758.5453123));
 }
 
 float worley(vec2 uv, float columns, float rows) {
