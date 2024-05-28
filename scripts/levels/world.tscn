@@ -1,28 +1,24 @@
 [gd_scene load_steps=3 format=3 uid="uid://7pc3dynyj3ax"]
 
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
-[ext_resource type="Texture2D" uid="uid://b8v0pcy4vh7fv" path="res://assets/art/entities/player/icon.svg" id="2_ydj35"]
+[ext_resource type="PackedScene" uid="uid://c6wl8krh5vc0f" path="res://scenes/entities/enemy.tscn" id="3_uxm3w"]
 
 [node name="Main" type="Node"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(686, 791)
-texture = ExtResource("2_ydj35")
+[node name="Enemy" parent="." instance=ExtResource("3_uxm3w")]
+position = Vector2(1315, 292)
 
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(200, 663.5)
-scale = Vector2(1, 2.94531)
-texture = ExtResource("2_ydj35")
+[node name="Enemy2" parent="." instance=ExtResource("3_uxm3w")]
+position = Vector2(1445, 662)
 
-[node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(1683, 950)
-texture = ExtResource("2_ydj35")
+[node name="Enemy3" parent="." instance=ExtResource("3_uxm3w")]
+position = Vector2(1043, 922)
 
-[node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(918, 71)
-scale = Vector2(8.125, 1)
-texture = ExtResource("2_ydj35")
+[node name="Enemy4" parent="." instance=ExtResource("3_uxm3w")]
+position = Vector2(427, 646)
+
+[node name="Enemy5" parent="." instance=ExtResource("3_uxm3w")]
+position = Vector2(560, 278)
 
 [node name="Player" parent="." instance=ExtResource("1_ypafy")]
 position = Vector2(853, 575)
-scale = Vector2(0.25, 0.25)
