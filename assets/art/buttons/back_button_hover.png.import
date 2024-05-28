@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba0yfkh7g78pw"
-path="res://.godot/imported/play_button_hovered.png-6989d4a2d47304aba66bad68b40208ba.ctex"
+uid="uid://dnlg31rvf6vlj"
+path="res://.godot/imported/back_button_hover.png-59bc3fd779628e543782a8394dd9ed05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/play_button_hovered.png"
-dest_files=["res://.godot/imported/play_button_hovered.png-6989d4a2d47304aba66bad68b40208ba.ctex"]
+source_file="res://assets/art/buttons/back_button_hover.png"
+dest_files=["res://.godot/imported/back_button_hover.png-59bc3fd779628e543782a8394dd9ed05.ctex"]
 
 [params]
 

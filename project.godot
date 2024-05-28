@@ -11,8 +11,34 @@ config_version=5
 [application]
 
 config/name="Cellular Conquest"
+run/main_scene="res://scenes/menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://assets/icon.svg"
+config/icon="res://assets/art/entities/player/icon.svg"
+<<<<<<<HEADconfig/features=PackedStringArray("4.2", "GL Compatibility")
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+
+[input]
+
+shoot={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"echo":false,"script":null)
+]
+}
+dash={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Organisms"
+2d_physics/layer_2="Projectiles"
 
 [rendering]
 
