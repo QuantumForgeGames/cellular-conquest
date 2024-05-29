@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c40fkbvpnj2qf"]
+[gd_scene load_steps=14 format=3 uid="uid://c40fkbvpnj2qf"]
 
 [ext_resource type="Script" path="res://scripts/entities/cactus_cube/cactus_cube.gd" id="1_ti5rl"]
 [ext_resource type="Texture2D" uid="uid://dg6wt2752iol3" path="res://assets/art/entities/cactus_cube/Body.png" id="2_tnr36"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/entities/cactus_cube/idle_state.gd" id="7_ll2ei"]
 [ext_resource type="Script" path="res://scripts/entities/cactus_cube/chase_state.gd" id="8_i16fl"]
 [ext_resource type="Texture2D" uid="uid://dp7iics4dliaw" path="res://assets/art/entities/cactus_cube/Spike.png" id="9_4pqh4"]
+[ext_resource type="Script" path="res://scripts/entities/cactus_cube/rage_state.gd" id="10_uht5j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6gra"]
 size = Vector2(83, 81)
@@ -16,8 +17,14 @@ size = Vector2(83, 81)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qc4pw"]
 size = Vector2(80, 81)
 
-[node name="CactusCube" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_e454s"]
+radius = 340.001
+
+[node name="CactusCube" type="CharacterBody2D" node_paths=PackedStringArray("rage_timer", "angry_face", "neutral_face")]
 script = ExtResource("1_ti5rl")
+rage_timer = NodePath("RageTimer")
+angry_face = NodePath("Body/AngryFace")
+neutral_face = NodePath("Body/NeutralFace")
 
 [node name="Body" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -68,10 +75,29 @@ shape = SubResource("RectangleShape2D_qc4pw")
 script = ExtResource("6_xoon1")
 current_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("7_ll2ei")
+entity = NodePath("../..")
 
-[node name="Chase" type="Node" parent="StateMachine"]
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("8_i16fl")
+entity = NodePath("../..")
+
+[node name="Rage" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity")]
+script = ExtResource("10_uht5j")
+entity = NodePath("../..")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_e454s")
+
+[node name="RageTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="damage_recieved" from="Hitbox" to="." method="_on_hitbox_damage_recieved"]
+[connection signal="damage_recieved" from="Hitbox" to="StateMachine" method="_on_damage_recieved"]
+[connection signal="body_entered" from="DetectionArea" to="StateMachine" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="StateMachine" method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="RageTimer" to="StateMachine/Rage" method="_on_rage_timer_timeout"]
