@@ -1,7 +1,7 @@
 extends State
 
 @export var ROTATION_SPEED_MIN := 0.075
-@export var ROTATION_SPEED_MAX := 0.125
+@export var ROTATION_SPEED_MAX := 0.15
 var rotation_speed = ROTATION_SPEED_MIN
 
 @export var entity: CactusCube

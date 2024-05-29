@@ -42,7 +42,8 @@ dash={
 [layer_names]
 
 2d_physics/layer_1="Organisms"
-2d_physics/layer_2="Projectiles"
+2d_physics/layer_2="PlayerProjectiles"
+2d_physics/layer_3="EnemyProjectiles"
 
 [rendering]
 

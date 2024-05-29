@@ -2,7 +2,12 @@ extends Area2D
 class_name Projectile
 
 @export var damage: int = 1
+@export var despawn_time: float = 6.
+
 var velocity := Vector2.ZERO
+
+func _ready() -> void:
+	get_tree().create_timer(despawn_time).timeout.connect(_on_hit)
 
 func _physics_process(delta: float) -> void:
 	position += velocity * delta	

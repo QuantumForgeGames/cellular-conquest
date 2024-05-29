@@ -32,6 +32,7 @@ shape = SubResource("CircleShape2D_swsho")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Hitbox" parent="." instance=ExtResource("4_xylr6")]
+collision_layer = 5
 SIZE_SCALE_FACTOR = 0.05
 SIZE_TWEEN_RATE = 0.1
 
