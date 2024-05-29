@@ -20,7 +20,16 @@ func _process(delta):
 		
 func _physics_process(delta):
 	current_state.physics_process(delta)
-	
+
+func _on_detection_area_body_exited(body: CharacterBody2D) -> void:
+	current_state.on_detection_area_body_exited(body)
+
+func _on_detection_area_body_entered(body: CharacterBody2D) -> void:
+	current_state.on_detection_area_body_entered(body)
+
+func _on_damage_recieved(value: int) -> void:
+	current_state.on_damage_recieved(value)
+
 func on_child_transitioned(new_state_name: StringName) -> void:
 	var new_state = states.get(new_state_name)
 	if new_state != null:

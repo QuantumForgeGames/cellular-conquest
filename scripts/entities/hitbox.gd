@@ -1,7 +1,7 @@
 extends Area2D
 class_name Hitbox
 
-signal damage_recieved
+signal damage_recieved(value: float)
 
 @onready var entity := get_parent()
 @export var BASE_HEALTH := 1
@@ -24,7 +24,7 @@ func update_size(old_health: int, current_health: int):
 
 func on_damage_recieved(val: int):
 	health -= val
-	damage_recieved.emit()
+	damage_recieved.emit(val)
 	
 func _on_area_entered(area: Area2D) -> void:
 	if entity is Player and area is Hitbox:

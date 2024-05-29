@@ -10,8 +10,17 @@ func enter() -> void:
 func exit() -> void:
 	pass
 	
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	pass
  
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
+	pass
+
+func on_damage_recieved(_damage: int) -> void:
+	pass
+	
+func on_detection_area_body_entered(_body: CharacterBody2D) -> void:
+	pass
+	
+func on_detection_area_body_exited(_body: CharacterBody2D) -> void:
 	pass
