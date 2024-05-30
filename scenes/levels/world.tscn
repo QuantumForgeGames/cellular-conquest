@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
 [ext_resource type="PackedScene" uid="uid://de54r1arpxcg3" path="res://scenes/ui.tscn" id="4_wk5ex"]
-[ext_resource type="PackedScene" path="res://scenes/entities/cactus_cube.tscn" id="5_qa2m0"]
+[ext_resource type="Script" path="res://scripts/system/enemy_root.gd" id="3_m4x4b"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D"]
 
 [node name="BackgroundWaterEffect" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("1_ve215")]
 _Player = NodePath("../Player")
@@ -13,10 +13,7 @@ _Player = NodePath("../Player")
 [node name="Player" parent="." instance=ExtResource("1_ypafy")]
 position = Vector2(853, 575)
 
-[node name="CactusCube" parent="." instance=ExtResource("5_qa2m0")]
-position = Vector2(155, 819)
-
-[node name="CactusCube2" parent="." instance=ExtResource("5_qa2m0")]
-position = Vector2(1478, 392)
 
 [node name="UI" parent="." instance=ExtResource("4_wk5ex")]
+[node name="EnemyRoot" type="Node2D" parent="."]
+script = ExtResource("3_m4x4b")
