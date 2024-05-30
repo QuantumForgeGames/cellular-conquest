@@ -8,4 +8,3 @@ func spawn(position: Vector2, rotation: float, scale: Vector2, target: Node2D) -
 	spike.global_position = position
 	spike.rotation = rotation
 	spike.scale = scale
-	

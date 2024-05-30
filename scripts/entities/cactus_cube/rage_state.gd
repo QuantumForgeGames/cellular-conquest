@@ -7,7 +7,7 @@ func enter() -> void:
 	_on_shoot_cooldown_timer_timeout()
 	entity.shoot_cooldown_timer.start()
 
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	var angle_to_target = (entity.target.global_position - entity.global_position).angle()
 	entity.rotation = lerp_angle(entity.rotation, angle_to_target + PI/2, 0.1)
 
@@ -27,4 +27,4 @@ func _on_rage_timer_timeout() -> void:
 
 func _on_shoot_cooldown_timer_timeout() -> void:
 	entity.launch_spikes()
-	entity.spawn_spikes()
+	entity.call_deferred("spawn_spikes")

@@ -52,4 +52,4 @@ func on_absorbed() -> void:
 	#EventManager.game_over.emit()
 	#$Camera2D.reparent(get_parent())
 	#queue_free()
-	
+
