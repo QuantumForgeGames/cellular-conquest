@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dvsrbs8erkk1f" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
-[ext-resource type="PackedScene" uid="uid://c40fkbvpnj2qf" path="res://scenes/entities/cactus_cube.tscn" id="5_qa2mo"]
+[ext_resource type="PackedScene" uid="uid://c40fkbvpnj2qf" path="res://scenes/entities/cactus_cube.tscn" id="5_qa2m0"]
 [node name="Main" type="Node"]
 
 [node name="BackgroundWaterEffect" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("1_ve215")]
