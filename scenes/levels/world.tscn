@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://7pc3dynyj3ax"]
+[gd_scene load_steps=9 format=3 uid="uid://7pc3dynyj3ax"]
 
 [ext_resource type="Shader" path="res://assets/shaders/water_effect.gdshader" id="1_jv6e6"]
 [ext_resource type="Texture2D" uid="uid://dv2unbnfjqv3r" path="res://assets/gradients/water_effect_color_ramp.tres" id="2_c85ou"]
 [ext_resource type="Script" path="res://scripts/entities/water_effect.gd" id="3_xnoyl"]
 [ext_resource type="PackedScene" uid="uid://c6wl8krh5vc0f" path="res://scenes/entities/enemy.tscn" id="4_4ff1c"]
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="5_imybo"]
+[ext_resource type="PackedScene" uid="uid://cbriu2d20kv3t" path="res://scenes/ui.tscn" id="6_bq5ro"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_civoq"]
 shader = ExtResource("1_jv6e6")
@@ -38,3 +39,5 @@ position = Vector2(560, 278)
 
 [node name="Player" parent="." instance=ExtResource("5_imybo")]
 position = Vector2(853, 575)
+
+[node name="UI" parent="." instance=ExtResource("6_bq5ro")]
