@@ -2,14 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dvsrbs8erkk1f" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
-[ext_resource type="PackedScene" uid="uid://c6wl8krh5vc0f" path="res://scenes/entities/enemy.tscn" id="3_uxm3w"]
-
+[ext_resource type="PackedScene" uid="uid://c40fkbvpnj2qf" path="res://scenes/entities/cactus_cube.tscn" id="5_qa2m0"]
 [node name="Main" type="Node"]
 
 [node name="BackgroundWaterEffect" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("1_ve215")]
 _Player = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("5_imybo")]
+[node name="Player" parent="." instance=ExtResource("1_ypafy")]
 position = Vector2(853, 575)
 
 [node name="CactusCube" parent="." instance=ExtResource("5_qa2m0")]
