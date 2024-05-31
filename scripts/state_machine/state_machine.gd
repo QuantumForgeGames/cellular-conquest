@@ -6,36 +6,36 @@ extends Node
 var states: Dictionary = {}
  
 func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name] = child
-			child.transitioned.connect(on_child_transitioned)
-		else:
-			push_warning("State machine contains child which is not 'State'")
-			
-	current_state.enter()
-			
+    for child in get_children():
+        if child is State:
+            states[child.name] = child
+            child.transitioned.connect(on_child_transitioned)
+        else:
+            push_warning("State machine contains child which is not 'State'")
+            
+    current_state.enter()
+            
 func _process(delta):
-	current_state.process(delta)
-		
+    current_state.process(delta)
+        
 func _physics_process(delta):
-	current_state.physics_process(delta)
+    current_state.physics_process(delta)
 
 func _on_detection_area_body_exited(body: CharacterBody2D) -> void:
-	current_state.on_detection_area_body_exited(body)
+    current_state.on_detection_area_body_exited(body)
 
 func _on_detection_area_body_entered(body: CharacterBody2D) -> void:
-	current_state.on_detection_area_body_entered(body)
+    current_state.on_detection_area_body_entered(body)
 
 func _on_damage_recieved(value: int) -> void:
-	current_state.on_damage_recieved(value)
+    current_state.on_damage_recieved(value)
 
 func on_child_transitioned(new_state_name: StringName) -> void:
-	var new_state = states.get(new_state_name)
-	if new_state != null:
-		if new_state != current_state:
-			current_state.exit()
-			new_state.enter()
-			current_state = new_state
-	else:
-		push_warning("Called transition on a state that does not exist")
+    var new_state = states.get(new_state_name)
+    if new_state != null:
+        if new_state != current_state:
+            current_state.exit()
+            new_state.enter()
+            current_state = new_state
+    else:
+        push_warning("Called transition on a state that does not exist")
