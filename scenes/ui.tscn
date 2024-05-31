@@ -4,13 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://wnvp55cjuohi" path="res://assets/art/ability_cooldown_sprite.png" id="4_qoy8n"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r4mps"]
-load_path = "res://.godot/imported/ability_box.png-e20d1970c8a96cd2a3be104da53d2102.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j1dgw"]
-load_path = "res://.godot/imported/ability_box_outline.png-85f288ec411f5a9845bcd3f8ddbe66d7.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hvsed"]
-load_path = "res://.godot/imported/ability_box_fill.png-ec4ff59b139146adfc0a98bca0638634.ctex"
+
+[sub_resource type="Animation" id="Animation_k64hk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/TextureRect3/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.10748, 0.10748, 0.10748, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_w7oci"]
 resource_name = "cooldown_complete"
@@ -26,21 +38,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.10748, 0.10748, 0.10748, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_k64hk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/HBoxContainer/TextureRect3/TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.10748, 0.10748, 0.10748, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3sdpw"]
