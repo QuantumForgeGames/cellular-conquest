@@ -1,6 +1,8 @@
 class_name CactusCube
 extends Organism
 
+signal died(enemy)
+
 @export var rage_persistence_timer: Timer
 @export var shoot_cooldown_timer: Timer
 
@@ -16,6 +18,7 @@ func _ready() -> void:
 	spawn_spikes()
 
 func on_absorbed() -> void:
+	died.emit(self)
 	queue_free()
 
 func _on_hitbox_damage_recieved(_value: int) -> void:

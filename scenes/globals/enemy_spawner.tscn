@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://di31867hea6og"]
+
+[ext_resource type="Script" path="res://scripts/globals/enemy_spawner.gd" id="1_hfgfl"]
+[ext_resource type="Resource" uid="uid://nw8ou1cnlylg" path="res://assets/custom/enemy_data/cactus_cube.tres" id="2_v5tcn"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_hfgfl")
+_enemy_data = Array[Resource("res://scripts/custom/enemy_data.gd")]([ExtResource("2_v5tcn")])
+
+[node name="SpawnRoot" type="Node2D" parent="."]

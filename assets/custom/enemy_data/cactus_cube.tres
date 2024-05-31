@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://nw8ou1cnlylg"]
+
+[ext_resource type="Script" path="res://scripts/custom/enemy_data.gd" id="1_han4u"]
+[ext_resource type="PackedScene" path="res://scenes/entities/cactus_cube.tscn" id="1_y1slu"]
+
+[resource]
+script = ExtResource("1_han4u")
+max_count = 10
+scene = ExtResource("1_y1slu")

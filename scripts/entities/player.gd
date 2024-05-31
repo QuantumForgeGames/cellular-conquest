@@ -26,6 +26,7 @@ var can_attack: bool = true
 @onready var attack_timer: Timer = $AttackCooldownTimer
 
 func _ready() -> void:
+	EnemySpawner.player = self
 	$Hitbox.health = initial_health
 
 func _physics_process(_delta: float) -> void:
