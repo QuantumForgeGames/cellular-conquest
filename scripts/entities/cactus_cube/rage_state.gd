@@ -15,7 +15,7 @@ func on_detection_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if entity.rage_persistence_timer.time_left > 0:
 			entity.rage_persistence_timer.stop()
-			
+
 func on_detection_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		entity.rage_persistence_timer.start()

@@ -51,6 +51,7 @@ func _input(_event: InputEvent) -> void:
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
 		projectile.velocity = PROJECTILE_SPEED * (get_global_mouse_position() - global_position).normalized()
+		projectile.rotation = projectile.velocity.angle()
 		add_sibling(projectile)
 		attack_timer.start()
 
@@ -61,10 +62,11 @@ func toggle_dash() -> void:
 
 func on_absorbed() -> void:
 	print("Absorbed! (Debug)")
-	#EventManager.game_over.emit()
-	#$Camera2D.reparent(get_parent())
-	#$EventManager.player_health_changed.emit($Hitbox.health)
-	#queue_free()
+	$Camera2D.reparent(get_parent())
+	$Hitbox.health = 0
+	EventManager.player_health_changed.emit($Hitbox.health)
+	EventManager.game_over.emit()
+	queue_free()
 	
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true
@@ -74,3 +76,5 @@ func _on_attack_cooldown_timer_timeout():
 
 func _on_hitbox_damage_recieved(_value: float) -> void:
 	EventManager.player_health_changed.emit($Hitbox.health)
+	if $Hitbox.health <= 0:
+		on_absorbed()

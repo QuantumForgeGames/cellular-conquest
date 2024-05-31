@@ -15,6 +15,7 @@ var target: Player = null
 
 func _ready() -> void:
 	$Hitbox.health = initial_health
+	EventManager.game_over.connect(_on_game_over)
 	spawn_spikes()
 
 func on_absorbed() -> void:
@@ -40,3 +41,6 @@ func launch_spikes() -> void:
 func spawn_spikes() -> void:
 	for spawner in spike_spawner.get_children():
 		spike_spawner.spawn(spawner.global_position, spawner.direction.angle(), spawner.scale, spikes)
+
+func _on_game_over():
+	process_mode = Node.PROCESS_MODE_DISABLED
