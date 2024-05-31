@@ -51,6 +51,7 @@ func _input(_event: InputEvent) -> void:
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
 		projectile.velocity = PROJECTILE_SPEED * (get_global_mouse_position() - global_position).normalized()
+		projectile.rotation = projectile.velocity.angle()
 		add_sibling(projectile)
 		attack_timer.start()
 
