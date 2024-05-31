@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://dsysbfr5l57uq"]
+
+[ext_resource type="Script" path="res://scripts/custom/enemy_data.gd" id="1_0teyb"]
+[ext_resource type="PackedScene" uid="uid://b3cto6cxlu6de" path="res://scenes/entities/tooth_dasher.tscn" id="1_3raom"]
+
+[resource]
+script = ExtResource("1_0teyb")
+max_count = 3
+scene = ExtResource("1_3raom")
