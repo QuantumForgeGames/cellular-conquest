@@ -79,13 +79,16 @@ func toggle_dash() -> void:
 	$Hitbox/CollisionShape2D.set_deferred("disabled", not $Hitbox/CollisionShape2D.disabled)
 	
 func on_absorbed() -> void:
-	print("Absorbed! (Debug)")
 	$Camera2D.reparent(get_parent())
-	$Hitbox.health = 0
-	EventManager.player_health_changed.emit($Hitbox.health)
+	$Hitbox.queue_free()
+	EventManager.player_health_changed.emit(0)
 	EventManager.game_over.emit()
-	queue_free()
 	
+	process_mode = Node.PROCESS_MODE_DISABLED
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector2(0, 0), 1.)
+	tween.tween_callback(queue_free)
+
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true
 
