@@ -46,7 +46,7 @@ func _input(_event: InputEvent) -> void:
 		get_tree().create_timer(DASH_DURATION).timeout.connect(toggle_dash)
 		dash_timer.start()
 	
-	if Input.is_action_just_pressed("shoot") and can_attack:
+	if Input.is_action_pressed("shoot") and can_attack:
 		can_attack = false
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
