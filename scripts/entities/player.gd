@@ -7,6 +7,8 @@ class_name Player
 @export var initial_health: int = 5
 
 # Dash ability
+@onready var dash_timer: Timer = $DashCooldownTimer
+
 @export var DASH_SPEED := 1200.
 @export var DASH_DURATION := 0.3
 @export var DASH_DEADZONE := 10 # in pixels
@@ -16,15 +18,23 @@ var is_dashing: bool = false
 var can_dash: bool = true
 
 # Projectile ability
-@export var PROJECTILE_SPEED := 1000.
-var projectile_scene := preload("res://scenes/entities/projectile.tscn")
-
-# Other
-var can_attack: bool = true
-@onready var dash_timer: Timer = $DashCooldownTimer
 @onready var attack_timer: Timer = $AttackCooldownTimer
 
+@export var PROJECTILE_SPEED := 1000.
+
+var projectile_scene := preload("res://scenes/entities/projectile.tscn")
+var can_attack: bool = true
+
+# Knockback ability
+@onready var knockback_timer: Timer = $KnockbackCooldownTimer
+
+@export var knockback_strength: float = 1.
+@export var knockback_radius: = 1. # does nothing as of now
+
+var can_knockback: bool = true
+
 func _ready() -> void:
+	z_index = 1
 	EnemySpawner.player = self
 	$Hitbox.health = initial_health
 	EventManager.player_health_changed.emit($Hitbox.health)
@@ -52,8 +62,14 @@ func _input(_event: InputEvent) -> void:
 		projectile.global_position = global_position
 		projectile.velocity = PROJECTILE_SPEED * (get_global_mouse_position() - global_position).normalized()
 		projectile.rotation = projectile.velocity.angle()
+		projectile.scale = scale
 		add_sibling(projectile)
 		attack_timer.start()
+		
+	if Input.is_action_just_pressed("knockback") and can_knockback:
+		can_knockback = false
+		_apply_knockback()
+		knockback_timer.start()
 
 func toggle_dash() -> void:
 	is_dashing = not is_dashing
@@ -74,7 +90,14 @@ func _on_dash_cooldown_timer_timeout():
 func _on_attack_cooldown_timer_timeout():
 	can_attack = true
 
+func _on_knockback_cooldown_timer_timeout() -> void:
+	can_knockback = true
+
 func _on_hitbox_damage_recieved(_value: float) -> void:
 	EventManager.player_health_changed.emit($Hitbox.health)
 	if $Hitbox.health <= 0:
 		on_absorbed()
+
+func _apply_knockback():
+	for body in $KnockbackArea.get_overlapping_bodies():
+		pass

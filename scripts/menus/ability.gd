@@ -2,7 +2,7 @@
 
 extends TextureRect
 
-@export var _ProgressBar :ProgressBar
+@onready var _ProgressBar = %ProgressBar
 
 
 func set_progress(percent :float) -> void:

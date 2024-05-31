@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cc6g5tm1v0gmc"]
 
-[ext_resource type="Texture2D" uid="uid://tb86ajd0rhfd" path="res://assets/art/buttons/button_icon.png" id="1_jr4xp"]
+[ext_resource type="Texture2D" uid="uid://jl5q8sipqmdf" path="res://assets/art/buttons/button_icon.png" id="1_jr4xp"]
 [ext_resource type="Shader" path="res://assets/shaders/ability_progress.gdshader" id="2_verui"]
 [ext_resource type="Script" path="res://scripts/menus/ability.gd" id="2_vju26"]
-[ext_resource type="Texture2D" uid="uid://bkh5imtw500ed" path="res://assets/art/buttons/button_icon_mask.png" id="3_n5eg5"]
+[ext_resource type="Texture2D" uid="uid://de5kbe1p5m3ud" path="res://assets/art/buttons/button_icon_mask.png" id="3_n5eg5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u1yyi"]
 shader = ExtResource("2_verui")
@@ -12,14 +12,13 @@ shader_parameter/mask = ExtResource("3_n5eg5")
 [sub_resource type="ViewportTexture" id="ViewportTexture_xo5gm"]
 viewport_path = NodePath("CanvasLayer")
 
-[node name="Ability" type="TextureRect" node_paths=PackedStringArray("_ProgressBar")]
+[node name="Ability" type="TextureRect"]
 offset_right = 253.0
 offset_bottom = 256.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("1_jr4xp")
 script = ExtResource("2_vju26")
-_ProgressBar = NodePath("CanvasLayer/MarginContainer/ProgressBar")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_u1yyi")
@@ -44,6 +43,7 @@ theme_override_constants/margin_top = 28
 theme_override_constants/margin_bottom = 23
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 value = 14.52
