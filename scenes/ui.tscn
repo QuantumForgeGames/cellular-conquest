@@ -1,0 +1,246 @@
+[gd_scene load_steps=16 format=3 uid="uid://de54r1arpxcg3"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_pi5ms"]
+[ext_resource type="PackedScene" path="res://scenes/menus/ability.tscn" id="3_2qla5"]
+[ext_resource type="Texture2D" path="res://assets/art/ability_cooldown_sprite.png" id="4_qoy8n"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r4mps"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j1dgw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hvsed"]
+
+[sub_resource type="Animation" id="Animation_k64hk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/TextureRect3/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.10748, 0.10748, 0.10748, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w7oci"]
+resource_name = "cooldown_complete"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/TextureRect3/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.10748, 0.10748, 0.10748, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3sdpw"]
+_data = {
+"RESET": SubResource("Animation_k64hk"),
+"cooldown_complete": SubResource("Animation_w7oci")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vngfg"]
+atlas = ExtResource("4_qoy8n")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgptg"]
+atlas = ExtResource("4_qoy8n")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r766c"]
+atlas = ExtResource("4_qoy8n")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xtgp"]
+atlas = ExtResource("4_qoy8n")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg840"]
+atlas = ExtResource("4_qoy8n")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1mnw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vngfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgptg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r766c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xtgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg840")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vngfg")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_pi5ms")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 90
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_r4mps")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -11.5
+offset_right = 25.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "Attack"
+
+[node name="TextureRect2" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_r4mps")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_j1dgw")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/HBoxContainer/TextureRect3"]
+modulate = Color(0.10748, 0.10748, 0.10748, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("CompressedTexture2D_hvsed")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/MarginContainer/HBoxContainer/TextureRect3"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_3sdpw")
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="SizeTitle" type="Label" parent="Control/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Size:"
+
+[node name="SizeValue" type="Label" parent="Control/MarginContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="AttackBoxSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(836, 948)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1mnw4")
+frame_progress = 0.289652
+
+[node name="Label" type="Label" parent="AttackBoxSprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -139.5
+offset_right = -108.5
+offset_bottom = -116.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "Attack"
+metadata/_edit_use_anchors_ = true
+
+[node name="DashBoxSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1085, 948)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1mnw4")
+frame_progress = 0.289652
+
+[node name="Label" type="Label" parent="DashBoxSprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -139.5
+offset_right = -108.5
+offset_bottom = -116.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "Dash"
+metadata/_edit_use_anchors_ = true
+
+[node name="Ability" parent="." instance=ExtResource("3_2qla5")]
+offset_left = 773.0
+offset_top = 884.0
+offset_right = 1026.0
+offset_bottom = 1140.0
+scale = Vector2(0.5, 0.5)
+
+[connection signal="animation_finished" from="AttackBoxSprite2D" to="AttackBoxSprite2D" method="_on_animation_finished"]
+[connection signal="animation_finished" from="DashBoxSprite2D" to="DashBoxSprite2D" method="_on_animation_finished"]
