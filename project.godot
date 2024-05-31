@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cellular Conquest"
-run/main_scene="res://scenes/menus/main_menu.tscn"
+run/main_scene="res://scenes/menus/blank.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/art/entities/player/icon.svg"
 <<<<<<<HEADconfig/features=PackedStringArray("4.2", "GL Compatibility")
@@ -19,6 +19,7 @@ config/icon="res://assets/art/entities/player/icon.svg"
 [autoload]
 
 EventManager="*res://scripts/globals/event_manager.gd"
+SceneTransition="*res://scenes/menus/scene_transition.tscn"
 
 [display]
 

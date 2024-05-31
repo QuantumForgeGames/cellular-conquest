@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://7pc3dynyj3ax"]
+[gd_scene load_steps=5 format=3 uid="uid://7pc3dynyj3ax"]
 
-[ext_resource type="PackedScene" uid="uid://dvsrbs8erkk1f" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
+[ext_resource type="PackedScene" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
-[ext_resource type="PackedScene" uid="uid://c40fkbvpnj2qf" path="res://scenes/entities/cactus_cube.tscn" id="5_qa2m0"]
+[ext_resource type="PackedScene" uid="uid://de54r1arpxcg3" path="res://scenes/ui.tscn" id="4_wk5ex"]
+[ext_resource type="PackedScene" path="res://scenes/entities/cactus_cube.tscn" id="5_qa2m0"]
+
 [node name="Main" type="Node"]
 
 [node name="BackgroundWaterEffect" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("1_ve215")]
@@ -16,3 +18,5 @@ position = Vector2(155, 819)
 
 [node name="CactusCube2" parent="." instance=ExtResource("5_qa2m0")]
 position = Vector2(1478, 392)
+
+[node name="UI" parent="." instance=ExtResource("4_wk5ex")]

@@ -11,8 +11,7 @@ void vertex() {
 
 vec2 random(vec2 uv) {
 	return vec2(fract(sin(dot(uv.xy,
-		vec2(12.9898,78.233))) * 43758.5453123)) * clamp(0.75+((sin(TIME)) /4.0f), 0.5, 1.0);
-        //vec2(12.9898,78.233))) * 43758.5453123));
+		vec2(12.9898,78.233))) * 43758.5453123)) * clamp(0.75+((sin(TIME) +0.0) /4.0f), 0.5, 1.0);
 }
 
 float worley(vec2 uv, float columns, float rows) {
