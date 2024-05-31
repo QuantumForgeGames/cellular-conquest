@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7cjxymqc5067"
-path="res://.godot/imported/Body.png-694e328b274ed92df208232af138be17.ctex"
+uid="uid://dl0g7d8lhmwow"
+path="res://.godot/imported/AngryFace.png-d8106c0799bbfab3a694c78ab1fb0480.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/entities/player/Body.png"
-dest_files=["res://.godot/imported/Body.png-694e328b274ed92df208232af138be17.ctex"]
+source_file="res://assets/art/entities/cactus_cube/AngryFace.png"
+dest_files=["res://.godot/imported/AngryFace.png-d8106c0799bbfab3a694c78ab1fb0480.ctex"]
 
 [params]
 

@@ -1,43 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://7pc3dynyj3ax"]
+[gd_scene load_steps=4 format=3 uid="uid://7pc3dynyj3ax"]
 
-[ext_resource type="Shader" path="res://assets/shaders/water_effect.gdshader" id="1_jv6e6"]
-[ext_resource type="Texture2D" uid="uid://dv2unbnfjqv3r" path="res://assets/gradients/water_effect_color_ramp.tres" id="2_c85ou"]
-[ext_resource type="Script" path="res://scripts/entities/water_effect.gd" id="3_xnoyl"]
-[ext_resource type="PackedScene" uid="uid://c6wl8krh5vc0f" path="res://scenes/entities/enemy.tscn" id="4_4ff1c"]
-[ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="5_imybo"]
-[ext_resource type="PackedScene" uid="uid://cbriu2d20kv3t" path="res://scenes/ui.tscn" id="6_bq5ro"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_civoq"]
-shader = ExtResource("1_jv6e6")
-shader_parameter/color_ramp = ExtResource("2_c85ou")
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gclqv"]
-size = Vector2(1920, 1080)
-
+[ext_resource type="PackedScene" uid="uid://dvsrbs8erkk1f" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
+[ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
+[ext_resource type="PackedScene" uid="uid://c40fkbvpnj2qf" path="res://scenes/entities/cactus_cube.tscn" id="5_qa2m0"]
 [node name="Main" type="Node"]
 
-[node name="BackgroundWaterEffect" type="Sprite2D" parent="." node_paths=PackedStringArray("_Player")]
-material = SubResource("ShaderMaterial_civoq")
-texture = SubResource("PlaceholderTexture2D_gclqv")
-script = ExtResource("3_xnoyl")
+[node name="BackgroundWaterEffect" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("1_ve215")]
 _Player = NodePath("../Player")
 
-[node name="Enemy" parent="." instance=ExtResource("4_4ff1c")]
-position = Vector2(1315, 292)
-
-[node name="Enemy2" parent="." instance=ExtResource("4_4ff1c")]
-position = Vector2(1445, 662)
-
-[node name="Enemy3" parent="." instance=ExtResource("4_4ff1c")]
-position = Vector2(1043, 922)
-
-[node name="Enemy4" parent="." instance=ExtResource("4_4ff1c")]
-position = Vector2(427, 646)
-
-[node name="Enemy5" parent="." instance=ExtResource("4_4ff1c")]
-position = Vector2(560, 278)
-
-[node name="Player" parent="." instance=ExtResource("5_imybo")]
+[node name="Player" parent="." instance=ExtResource("1_ypafy")]
 position = Vector2(853, 575)
 
-[node name="UI" parent="." instance=ExtResource("6_bq5ro")]
+[node name="CactusCube" parent="." instance=ExtResource("5_qa2m0")]
+position = Vector2(155, 819)
+
+[node name="CactusCube2" parent="." instance=ExtResource("5_qa2m0")]
+position = Vector2(1478, 392)

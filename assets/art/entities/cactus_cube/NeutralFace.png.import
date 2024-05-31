@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7k74uq3x2cxf"
-path="res://.godot/imported/face.png-6964e00046c06969768d29f96057d2ca.ctex"
+uid="uid://pem1wfm2jrii"
+path="res://.godot/imported/NeutralFace.png-bcae96e7a5022d4a32b9e9c242fec7c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/entities/player/face.png"
-dest_files=["res://.godot/imported/face.png-6964e00046c06969768d29f96057d2ca.ctex"]
+source_file="res://assets/art/entities/cactus_cube/NeutralFace.png"
+dest_files=["res://.godot/imported/NeutralFace.png-bcae96e7a5022d4a32b9e9c242fec7c7.ctex"]
 
 [params]
 

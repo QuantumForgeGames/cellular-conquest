@@ -7,7 +7,7 @@ class_name Player
 @export var initial_health: int = 5
 
 # Dash ability
-@export var DASH_SPEED := 1000.
+@export var DASH_SPEED := 1200.
 @export var DASH_DURATION := 0.3
 @export var DASH_DEADZONE := 10 # in pixels
 
@@ -52,6 +52,8 @@ func _input(_event: InputEvent) -> void:
 
 func toggle_dash() -> void:
 	is_dashing = not is_dashing
+	$Body/NeutralFace.visible = not $Body/NeutralFace.visible
+	$Body/AngryFace.visible = not $Body/AngryFace.visible
 
 func on_absorbed() -> void:
 	print("Absorbed! (Debug)")
