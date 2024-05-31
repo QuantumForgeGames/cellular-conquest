@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbcgyhfuawphf"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_g6o13"]
-[ext_resource type="Texture2D" uid="uid://f1ooirglqf2o" path="res://assets/art/backgrounds/main_menu_background.png" id="2_ln8iu"]
-[ext_resource type="Texture2D" uid="uid://dvf3s5nqapjxb" path="res://assets/art/buttons/play_button_normal.png" id="3_vofoy"]
-[ext_resource type="Texture2D" uid="uid://ba0yfkh7g78pw" path="res://assets/art/buttons/play_button_hovered.png" id="4_l0sbk"]
-[ext_resource type="Texture2D" uid="uid://baobrkf7ci5c3" path="res://assets/art/buttons/settings_button_normal.png" id="5_8d5kh"]
-[ext_resource type="Texture2D" uid="uid://bnst3rea68l76" path="res://assets/art/buttons/settings_button_hovered.png" id="6_qq4ng"]
+[ext_resource type="Texture2D" uid="uid://dj6il25m7lmy2" path="res://assets/art/backgrounds/Title Page_BG.png" id="2_10iuo"]
+[ext_resource type="Texture2D" uid="uid://bc4hhh3mffit2" path="res://assets/art/buttons/Title Page_Play.png" id="3_055iv"]
+[ext_resource type="Texture2D" uid="uid://1raufynvb0nl" path="res://assets/art/buttons/Title Page_Play_Hover.png" id="4_erjvi"]
+[ext_resource type="Texture2D" uid="uid://old0m4ddmvw3" path="res://assets/art/buttons/Title Page_Settings.png" id="5_h55sr"]
+[ext_resource type="Texture2D" uid="uid://gqerhq3nlkri" path="res://assets/art/buttons/Title Page_Settings_Hover.png" id="6_wqgbh"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ln8iu")
+texture = ExtResource("2_10iuo")
 expand_mode = 3
 
 [node name="PlayButton" type="TextureButton" parent="."]
@@ -33,14 +33,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -734.0
-offset_top = -119.0
-offset_right = -473.0
-offset_bottom = 43.0
+offset_left = -933.0
+offset_top = -387.0
+offset_right = -384.0
+offset_bottom = 402.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("3_vofoy")
-texture_hover = ExtResource("4_l0sbk")
+texture_normal = ExtResource("3_055iv")
+texture_hover = ExtResource("4_erjvi")
 
 [node name="SettingsButton" type="TextureButton" parent="."]
 layout_mode = 1
@@ -49,14 +49,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -242.0
-offset_top = 41.0
-offset_right = 141.0
-offset_bottom = 303.0
+offset_left = -326.665
+offset_top = -151.78
+offset_right = 264.335
+offset_bottom = 394.22
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("5_8d5kh")
-texture_hover = ExtResource("6_qq4ng")
+texture_normal = ExtResource("5_h55sr")
+texture_hover = ExtResource("6_wqgbh")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

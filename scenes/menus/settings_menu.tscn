@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://m5wm72uy65ft"]
+[gd_scene load_steps=7 format=3 uid="uid://m5wm72uy65ft"]
 
 [ext_resource type="Script" path="res://scripts/menus/settings_menu.gd" id="1_eb81b"]
-[ext_resource type="Texture2D" uid="uid://dhbyt5q3od125" path="res://assets/art/backgrounds/settings_background.png" id="2_v788d"]
-[ext_resource type="Texture2D" uid="uid://70hfkguxc2si" path="res://assets/art/buttons/back_button_normal.png" id="3_hhcoe"]
-[ext_resource type="Texture2D" uid="uid://dnlg31rvf6vlj" path="res://assets/art/buttons/back_button_hover.png" id="4_l1fe8"]
+[ext_resource type="Texture2D" uid="uid://dfpw381stywmg" path="res://assets/art/backgrounds/Settings Page_BG.png" id="2_q2h7w"]
+[ext_resource type="Texture2D" uid="uid://byfgci125jv64" path="res://assets/art/buttons/Settings Page_Back.png" id="3_txgsr"]
+[ext_resource type="Texture2D" uid="uid://c76frwrlspyfg" path="res://assets/art/buttons/Settings Page_Back_Hover.png" id="4_iu8u4"]
+[ext_resource type="Texture2D" uid="uid://cfywpkod7v8rq" path="res://assets/art/buttons/Settings Page_SoundGrabber.png" id="5_ygpba"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_efobb"]
 
 [node name="Settings Menu" type="Control"]
 layout_mode = 3
@@ -14,17 +17,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eb81b")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BackgroundRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_v788d")
+texture = ExtResource("2_q2h7w")
 expand_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="BackButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,7 +40,24 @@ offset_right = -661.0
 offset_bottom = -268.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("3_hhcoe")
-texture_hover = ExtResource("4_l1fe8")
+texture_normal = ExtResource("3_txgsr")
+texture_hover = ExtResource("4_iu8u4")
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -54.0
+offset_right = 304.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("5_ygpba")
+theme_override_icons/grabber_highlight = ExtResource("5_ygpba")
+theme_override_styles/slider = SubResource("StyleBoxTexture_efobb")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
