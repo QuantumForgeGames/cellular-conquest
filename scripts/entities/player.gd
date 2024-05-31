@@ -10,8 +10,9 @@ class_name Player
 @onready var dash_timer: Timer = $DashCooldownTimer
 
 @export var DASH_SPEED := 1200.
-@export var DASH_DURATION := 0.3
+@export var DASH_DURATION := 0.4
 @export var DASH_DEADZONE := 10 # in pixels
+@export var DASH_DAMAGE := 1
 
 var dash_direction := Vector2.ZERO
 var is_dashing: bool = false
@@ -75,7 +76,8 @@ func toggle_dash() -> void:
 	is_dashing = not is_dashing
 	$Body/NeutralFace.visible = not $Body/NeutralFace.visible
 	$Body/AngryFace.visible = not $Body/AngryFace.visible
-
+	$Hitbox/CollisionShape2D.set_deferred("disabled", not $Hitbox/CollisionShape2D.disabled)
+	
 func on_absorbed() -> void:
 	print("Absorbed! (Debug)")
 	$Camera2D.reparent(get_parent())
@@ -101,3 +103,12 @@ func _on_hitbox_damage_recieved(_value: float) -> void:
 func _apply_knockback():
 	for body in $KnockbackArea.get_overlapping_bodies():
 		pass
+
+func _on_dash_damage_area_area_entered(area: Area2D) -> void:
+	if area is Hitbox:
+		if scale.x > area.entity.scale.x:
+			$Hitbox.health += area.health
+			area.entity.on_absorbed()
+			EventManager.player_health_changed.emit($Hitbox.health)
+		else:
+			area.on_damage_recieved(DASH_DAMAGE)
