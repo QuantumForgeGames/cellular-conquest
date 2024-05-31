@@ -20,7 +20,6 @@ var can_dash: bool = true
 var projectile_scene := preload("res://scenes/entities/projectile.tscn")
 
 # Other
-var health: int = 0
 var can_attack: bool = true
 @onready var dash_timer: Timer = $DashCooldownTimer
 @onready var attack_timer: Timer = $AttackCooldownTimer
@@ -28,26 +27,26 @@ var can_attack: bool = true
 func _ready() -> void:
 	EnemySpawner.player = self
 	$Hitbox.health = initial_health
-
+	EventManager.player_health_changed.emit($Hitbox.health)
+	
 func _physics_process(_delta: float) -> void:
 	if is_dashing:
 		velocity = DASH_SPEED * dash_direction
 	else:		
 		velocity = MAX_SPEED * (get_global_mouse_position() - global_position).limit_length(MAX_MOUSE_DIST) / MAX_MOUSE_DIST
 		
-	health = $Hitbox.health
 	move_and_slide()
 
 func _input(_event: InputEvent) -> void:
 	if not is_dashing and can_dash and Input.is_action_just_pressed("dash"):
-		is_dashing = true
+		toggle_dash()
 		can_dash = false
 		var dir = (get_global_mouse_position() - global_position)
 		dash_direction = (dir.normalized()) if (dir.length() > DASH_DEADZONE) else Vector2.ZERO
 		get_tree().create_timer(DASH_DURATION).timeout.connect(toggle_dash)
 		dash_timer.start()
 	
-	if Input.is_action_just_pressed("shoot") and can_attack:
+	if Input.is_action_pressed("shoot") and can_attack:
 		can_attack = false
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
@@ -64,6 +63,7 @@ func on_absorbed() -> void:
 	print("Absorbed! (Debug)")
 	#EventManager.game_over.emit()
 	#$Camera2D.reparent(get_parent())
+	#$EventManager.player_health_changed.emit($Hitbox.health)
 	#queue_free()
 	
 func _on_dash_cooldown_timer_timeout():
@@ -71,3 +71,6 @@ func _on_dash_cooldown_timer_timeout():
 
 func _on_attack_cooldown_timer_timeout():
 	can_attack = true
+
+func _on_hitbox_damage_recieved(_value: float) -> void:
+	EventManager.player_health_changed.emit($Hitbox.health)
