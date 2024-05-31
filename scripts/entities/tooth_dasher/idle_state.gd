@@ -14,6 +14,8 @@ func enter() -> void:
 
 func process(delta: float) -> void:
     entity.rotation += delta * rotation_speed
+    entity.velocity = entity.global_transform.y * entity.CHASE_SPEED
+    entity.move_and_slide()
 
 
 func on_detection_area_body_entered(body: Node2D) -> void:

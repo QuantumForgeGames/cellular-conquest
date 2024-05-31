@@ -15,6 +15,7 @@ func exit () -> void:
 
 
 func process (_delta: float) -> void:
+    if entity.target == null: return 
     var direction = entity.target.global_position - entity.global_position
     var angle_to_target = (direction).angle()
     entity.rotation = lerp_angle(entity.rotation, angle_to_target + PI/2, 0.1)
