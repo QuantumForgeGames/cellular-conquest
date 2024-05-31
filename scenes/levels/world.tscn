@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://7pc3dynyj3ax"]
 
-[ext_resource type="PackedScene" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
+[ext_resource type="PackedScene" uid="uid://dvsrbs8erkk1f" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
-[ext_resource type="PackedScene" uid="uid://de54r1arpxcg3" path="res://scenes/ui.tscn" id="4_wk5ex"]
 [ext_resource type="Script" path="res://scripts/system/enemy_root.gd" id="3_m4x4b"]
+[ext_resource type="PackedScene" uid="uid://de54r1arpxcg3" path="res://scenes/ui.tscn" id="4_wk5ex"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,7 +13,7 @@ _Player = NodePath("../Player")
 [node name="Player" parent="." instance=ExtResource("1_ypafy")]
 position = Vector2(853, 575)
 
-
 [node name="UI" parent="." instance=ExtResource("4_wk5ex")]
+
 [node name="EnemyRoot" type="Node2D" parent="."]
 script = ExtResource("3_m4x4b")

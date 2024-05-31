@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c40fkbvpnj2qf"]
+[gd_scene load_steps=15 format=3 uid="uid://b7qfjkga3rxrq"]
 
 [ext_resource type="Script" path="res://scripts/entities/cactus_cube/cactus_cube.gd" id="1_ti5rl"]
 [ext_resource type="Texture2D" uid="uid://dg6wt2752iol3" path="res://assets/art/entities/cactus_cube/Body.png" id="2_tnr36"]
