@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbriu2d20kv3t"]
+[gd_scene load_steps=16 format=3 uid="uid://de54r1arpxcg3"]
 
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_pi5ms"]
-[ext_resource type="Texture2D" uid="uid://wnvp55cjuohi" path="res://assets/art/ability_cooldown_sprite.png" id="4_qoy8n"]
+[ext_resource type="PackedScene" path="res://scenes/menus/ability.tscn" id="3_2qla5"]
+[ext_resource type="Texture2D" path="res://assets/art/ability_cooldown_sprite.png" id="4_qoy8n"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r4mps"]
 
@@ -233,6 +234,13 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 64
 text = "Dash"
 metadata/_edit_use_anchors_ = true
+
+[node name="Ability" parent="." instance=ExtResource("3_2qla5")]
+offset_left = 773.0
+offset_top = 884.0
+offset_right = 1026.0
+offset_bottom = 1140.0
+scale = Vector2(0.5, 0.5)
 
 [connection signal="animation_finished" from="AttackBoxSprite2D" to="AttackBoxSprite2D" method="_on_animation_finished"]
 [connection signal="animation_finished" from="DashBoxSprite2D" to="DashBoxSprite2D" method="_on_animation_finished"]
