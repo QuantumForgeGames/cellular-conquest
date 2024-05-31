@@ -21,7 +21,9 @@ var projectile_scene := preload("res://scenes/entities/projectile.tscn")
 
 # Other
 var health: int = 0
+var can_attack: bool = true
 @onready var dash_timer: Timer = $DashCooldownTimer
+@onready var attack_timer: Timer = $AttackCooldownTimer
 
 func _ready() -> void:
 	$Hitbox.health = initial_health
@@ -44,11 +46,13 @@ func _input(_event: InputEvent) -> void:
 		get_tree().create_timer(DASH_DURATION).timeout.connect(toggle_dash)
 		dash_timer.start()
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and can_attack:
+		can_attack = false
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
 		projectile.velocity = PROJECTILE_SPEED * (get_global_mouse_position() - global_position).normalized()
 		add_sibling(projectile)
+		attack_timer.start()
 
 func toggle_dash() -> void:
 	is_dashing = not is_dashing
@@ -63,3 +67,6 @@ func on_absorbed() -> void:
 	
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true
+
+func _on_attack_cooldown_timer_timeout():
+	can_attack = true

@@ -1,9 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://7pc3dynyj3ax"]
 
 [ext_resource type="PackedScene" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
-[ext_resource type="PackedScene" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
-[ext_resource type="PackedScene" uid="uid://cbriu2d20kv3t" path="res://scenes/ui.tscn" id="4_wk5ex"]
+[ext_resource type="PackedScene" uid="uid://de54r1arpxcg3" path="res://scenes/ui.tscn" id="4_wk5ex"]
 [ext_resource type="PackedScene" path="res://scenes/entities/cactus_cube.tscn" id="5_qa2m0"]
 
 [node name="Main" type="Node"]
