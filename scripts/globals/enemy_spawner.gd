@@ -56,7 +56,7 @@ func _spawn_enemy (enemy_data :EnemyData, index :int) -> void:
     enemy.died.connect(_on_enemy_died.bind(index))
     enemy.died.connect(EventManager.on_enemy_died.bind(enemy.name))
     _enemies[index].instances.append(enemy)
-    SpawnRoot.add_child(enemy)
+    SpawnRoot.add_child.call_deferred(enemy)
 
 
 func _respawn_far_enemies () -> void:
