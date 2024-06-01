@@ -22,6 +22,7 @@ var can_dash: bool = true
 @onready var attack_timer: Timer = $AttackCooldownTimer
 
 @export var PROJECTILE_SPEED := 1000.
+@export var PROJECTILE_DAMAGE := 1
 
 var projectile_scene := preload("res://scenes/entities/projectile.tscn")
 var can_attack: bool = true
@@ -29,13 +30,26 @@ var can_attack: bool = true
 # Knockback ability
 @onready var knockback_timer: Timer = $KnockbackCooldownTimer
 
-@export var KNOCKBACK_STRENGTH: float = 400.
+@export var KNOCKBACK_STRENGTH: float = 100.
 @export var KNOCKBACK_RADIUS: = 1. # does nothing as of now
 
 var can_knockback: bool = true
 
-# other
+# Other
 @onready var camera := $Camera2D
+
+# Player Stats
+var cactus_points: int = 0
+var tooth_points: int = 0
+var bar_points: int = 0
+
+var shoot_level: int = 0
+var dash_level: int = 0 
+var knockback_level: int = 0
+
+var CACTUS_POINT_THRESHOLD: int = 10
+var TOOTH_POINT_THRESHOLD: int = 10
+var BAR_POINT_THRESHOLD: int = 10
 
 func _ready() -> void:
 	z_index = 1
@@ -43,7 +57,6 @@ func _ready() -> void:
 	$Hitbox.health = initial_health
 	EventManager.player_health_changed.emit($Hitbox.health)
 	EventManager.player_health_changed.connect(_on_player_health_changed)
-	EventManager.enemy_died.connect(_on_enemy_died)
 
 func _physics_process(_delta: float) -> void:
 	if is_dashing:
@@ -69,6 +82,7 @@ func _input(_event: InputEvent) -> void:
 		projectile.velocity = PROJECTILE_SPEED * (get_global_mouse_position() - global_position).normalized()
 		projectile.rotation = projectile.velocity.angle()
 		projectile.scale = scale
+		projectile.damage = PROJECTILE_DAMAGE
 		add_sibling(projectile)
 		attack_timer.start()
 		
@@ -105,9 +119,11 @@ func on_absorbed() -> void:
 func on_win(loser: CharacterBody2D) -> void:
 	EventManager.player_health_changed.emit($Hitbox.health)
 	if loser is CactusCube:
-		print("Hi cactus")
+		cactus_points += 1
 	if loser is ToothDasher:
-		print("hi tooth")
+		tooth_points += 1
+		
+	upgrade_abilities()
 
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true
@@ -145,5 +161,25 @@ func _on_player_health_changed(health: int) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property(camera, "zoom", 0.2 * camera.zoom, 4.)
 
-func _on_enemy_died(enemy: Organism):
-	pass
+func upgrade_abilities():
+	# logic goes here for changing ability strengths based on stats
+	var new_shoot_level = (cactus_points / CACTUS_POINT_THRESHOLD)
+
+	if shoot_level < new_shoot_level:
+		shoot_level = new_shoot_level
+		PROJECTILE_DAMAGE += 1 # upgrade projectile strength
+		EventManager.skill_level_changed.emit("Shoot", shoot_level)
+		
+	var new_dash_level = (tooth_points / TOOTH_POINT_THRESHOLD)
+
+	if dash_level < new_dash_level:
+		dash_level = new_dash_level
+		DASH_DAMAGE += 1 # upgrade dash damage
+		EventManager.skill_level_changed.emit("Dash", dash_level)
+		
+	var new_knockback_level = (bar_points / BAR_POINT_THRESHOLD)
+
+	if knockback_level < new_knockback_level:
+		knockback_level = new_knockback_level
+		KNOCKBACK_STRENGTH += 50. # upgrade knockback strength
+		EventManager.skill_level_changed.emit("Knockback", shoot_level)

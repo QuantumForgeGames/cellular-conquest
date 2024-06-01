@@ -68,7 +68,7 @@ offset_right = 81.0
 offset_bottom = 43.0
 theme_override_fonts/font = ExtResource("5_lf60s")
 theme_override_font_sizes/font_size = 32
-text = "LVL 0"
+text = "LVL 1"
 
 [node name="DashAbility" parent="Control/MarginContainer/HBoxContainer" instance=ExtResource("3_2qla5")]
 material = SubResource("ShaderMaterial_5cypt")
@@ -83,7 +83,7 @@ offset_right = 78.0
 offset_bottom = 41.0
 theme_override_fonts/font = ExtResource("5_lf60s")
 theme_override_font_sizes/font_size = 32
-text = "LVL 0"
+text = "LVL 1"
 
 [node name="KnockbackAbility" parent="Control/MarginContainer/HBoxContainer" instance=ExtResource("3_2qla5")]
 material = SubResource("ShaderMaterial_emjpx")
@@ -99,7 +99,7 @@ offset_right = 81.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource("5_lf60s")
 theme_override_font_sizes/font_size = 32
-text = "LVL 0"
+text = "LVL 1"
 
 [node name="SizeHBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2

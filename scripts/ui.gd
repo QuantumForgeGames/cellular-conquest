@@ -18,6 +18,8 @@ func _ready():
 	EventManager.player_health_changed.connect(_on_player_health_changed)
 	EventManager.game_over.connect(_on_game_over)
 	_on_player_health_changed(player.get_node("Hitbox").health)
+	
+	EventManager.skill_level_changed.connect(_on_skill_level_changed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,3 +43,6 @@ func _on_player_health_changed(health: int):
 
 func _on_game_over():
 	process_mode = Node.PROCESS_MODE_DISABLED
+
+func _on_skill_level_changed(skill: String, level: int):
+	get_node("Control/MarginContainer/HBoxContainer/" + skill + "Ability" + "/Label").text = "LVL " + str(level)
