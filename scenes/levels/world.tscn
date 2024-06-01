@@ -40,3 +40,10 @@ event = {
 "name": "Play_Environment2D_V2"
 }
 trigger_on = 2
+
+[node name="AkEvent2D2" type="AkEvent2D" parent="."]
+event = {
+"id": 387490322,
+"name": "Play_Music_V2"
+}
+trigger_on = 2

@@ -8,6 +8,7 @@ var dashing :bool = false
 
 
 func enter () -> void:
+    Wwise.register_game_obj(self, self.name)
     entity.set_angry_face()
     _apply_knockback()
     entity.knockback_cooldown_timer.start()
@@ -28,7 +29,7 @@ func _on_knockback_cooldown_timer_timeout () -> void:
 
 
 func _apply_knockback () -> void:
-    Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERSHOCKWAVE_V1, self)
+    Wwise.post_event_id(AK.EVENTS.PLAY_KNOCKBACKGUY_ATTACK, self)
     var knockback_particles = knockback_particles_scene.instantiate()
     add_sibling(knockback_particles)
     knockback_particles.global_position = entity.global_position

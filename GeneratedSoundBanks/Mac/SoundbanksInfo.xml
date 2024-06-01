@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>../../../../../Downloads/To Install/GodotGameJam01</ProjectRoot>
-		<SourceFilesRoot>../../../../../Downloads/To Install/GodotGameJam01/.cache/Mac</SourceFilesRoot>
+		<ProjectRoot>../../../../../Downloads/To Install/GodotGameJam01 (1)</ProjectRoot>
+		<SourceFilesRoot>../../../../../Downloads/To Install/GodotGameJam01 (1)/.cache/Mac</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../../../Downloads/To Install/GodotGameJam01/GeneratedSoundBanks/Mac</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../../../Downloads/To Install/GodotGameJam01 (1)/GeneratedSoundBanks/Mac</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
@@ -162,7 +162,7 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{6FF924F3-754D-A0CB-AFAB-BC3CB42DF4E3}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{14DCEA64-60F7-BEAD-BE2D-89BA10D57674}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -182,6 +182,10 @@
 					<ShortName>PlayerAbsorb3_V2.wav</ShortName>
 					<CachePath>SFX/PlayerAbsorb3_V2_D98D18BE.wem</CachePath>
 				</File>
+				<File Id="127761734" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>KnockbackGuyShock_V1.wav</ShortName>
+					<CachePath>SFX/KnockbackGuyShock_V1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="144764208" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerBoost2_V2.wav</ShortName>
 					<CachePath>SFX/PlayerBoost2_V2_F562B977.wem</CachePath>
@@ -190,13 +194,29 @@
 					<ShortName>PlayerAttack2_V2.wav</ShortName>
 					<CachePath>SFX/PlayerAttack2_V2_8A0E9BA6.wem</CachePath>
 				</File>
+				<File Id="180424108" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerFinalAbsorbWin_V1.wav</ShortName>
+					<CachePath>SFX/PlayerFinalAbsorbWin_V1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="197262200" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BoosterGuyBoost2_V1.wav</ShortName>
 					<CachePath>SFX/BoosterGuyBoost2_V1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="199631103" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Music_V2.wav</ShortName>
+					<CachePath>SFX/Music_V2_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="208872951" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAttack6_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAttack6_V2_818F3B66.wem</CachePath>
+				</File>
 				<File Id="254012937" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerBoost3_V2.wav</ShortName>
 					<CachePath>SFX/PlayerBoost3_V2_3D1010E7.wem</CachePath>
+				</File>
+				<File Id="275567965" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAttack5_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAttack5_V2_818F3B66.wem</CachePath>
 				</File>
 				<File Id="319122083" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Play_V1.wav</ShortName>
@@ -242,10 +262,6 @@
 					<ShortName>BurnerOn_V1.wav</ShortName>
 					<CachePath>SFX/BurnerOn_V1_818F3B66.wem</CachePath>
 				</File>
-				<File Id="718478016" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>BurnerLoop_V1.wav</ShortName>
-					<CachePath>SFX/BurnerLoop_V1_FBC78EF0.wem</CachePath>
-				</File>
 				<File Id="739529342" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerAbsorb2_V2.wav</ShortName>
 					<CachePath>SFX/PlayerAbsorb2_V2_DD200D27.wem</CachePath>
@@ -285,6 +301,10 @@
 				<File Id="952790639" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BoosterGuyBoost3_V1.wav</ShortName>
 					<CachePath>SFX/BoosterGuyBoost3_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="967109282" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BurnerLoop_V2.wav</ShortName>
+					<CachePath>SFX/BurnerLoop_V2_FBC78EF0.wem</CachePath>
 				</File>
 				<File Id="977489576" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ambience_V1.wav</ShortName>
@@ -362,9 +382,9 @@
 						<MediaRef Id="1056220285"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1540338042" Name="Play_BurnerLoop_V1">
+				<Event Id="1540338041" Name="Play_BurnerLoop_V2">
 					<MediaRefs>
-						<MediaRef Id="718478016"/>
+						<MediaRef Id="967109282"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="847665841" Name="Play_BurnerOn_V1">
@@ -413,6 +433,29 @@
 						<MediaRef Id="994815928"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="1578105619" Name="Play_KnockbackGuy_Attack">
+					<MediaRefs>
+						<MediaRef Id="127761734"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="121161684" Name="Play_KnockbackGuy_Damage">
+					<MediaRefs>
+						<MediaRef Id="880923014"/>
+						<MediaRef Id="1031069105"/>
+						<MediaRef Id="1039611449"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1866712635"/>
+							<PluginRef Id="3013737261"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="387490322" Name="Play_Music_V2">
+					<MediaRefs>
+						<MediaRef Id="199631103"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="4147221584" Name="Play_Pause_V1">
 					<MediaRefs>
 						<MediaRef Id="413541021"/>
@@ -434,6 +477,8 @@
 					<MediaRefs>
 						<MediaRef Id="39529689"/>
 						<MediaRef Id="171751750"/>
+						<MediaRef Id="208872951"/>
+						<MediaRef Id="275567965"/>
 						<MediaRef Id="746547299"/>
 						<MediaRef Id="768296320"/>
 					</MediaRefs>
@@ -462,6 +507,11 @@
 						<MediaRef Id="36505752"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="3940632246" Name="Play_PlayerFinalAbsorbWin_V1">
+					<MediaRefs>
+						<MediaRef Id="180424108"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="312702222" Name="Play_PlayerShockwave_V1">
 					<MediaRefs>
 						<MediaRef Id="978317848"/>
@@ -475,9 +525,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-<<<<<<< HEAD
-	<FileHash>{77739E8C-0A19-D89D-B6D7-7AF6ED088A2D}</FileHash>
-=======
-	<FileHash>{04C866E9-A721-A9C5-4526-6BD195D8F0D6}</FileHash>
->>>>>>> 482ac2d (audio connections slowly being put into place)
+	<FileHash>{E19C1425-DA59-9ECB-A96F-F9CF67F6A11F}</FileHash>
 </SoundBanksInfo>

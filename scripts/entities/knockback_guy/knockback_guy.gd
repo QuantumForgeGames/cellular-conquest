@@ -29,7 +29,7 @@ func on_absorbed() -> void:
 	tween.tween_callback(queue_free)
 	
 func _on_hitbox_damage_received (_value :int) -> void:
-	Wwise.post_event_id(AK.EVENTS.PLAY_CACTUS_CUBE_DAMAGE, self)
+	Wwise.post_event_id(AK.EVENTS.PLAY_KNOCKBACKGUY_DAMAGE, self)
 	if $Hitbox.health <= 0:
 		on_absorbed()
 
