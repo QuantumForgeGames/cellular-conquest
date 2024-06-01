@@ -60,6 +60,7 @@ var TOOTH_POINT_THRESHOLD: int = 5
 var BAR_POINT_THRESHOLD: int = 5
 
 func _ready() -> void:
+	Wwise.register_game_obj(self, self.name)
 	z_index = 1
 	EnemySpawner.player = self
 	$Hitbox.health = initial_health
@@ -77,15 +78,22 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _input(_event: InputEvent) -> void:
-	if not is_dashing and can_dash and Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash"):
+		if is_dashing or not can_dash:
+			Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERABILITYUNAVAILABLE_V2, self)
+			return
 		toggle_dash()
 		can_dash = false
 		var dir = (get_global_mouse_position() - global_position)
 		dash_direction = (dir.normalized()) if (dir.length() > DASH_DEADZONE) else Vector2.ZERO
 		get_tree().create_timer(DASH_DURATION).timeout.connect(toggle_dash)
 		dash_timer.start()
+		Wwise.post_event_id(AK.EVENTS.PLAY_PLAYER_LOCOMOTION_BOOSTS, self)
 	
-	if Input.is_action_pressed("shoot") and can_attack:
+	if Input.is_action_just_pressed("shoot"):
+		if not can_attack:
+			Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERABILITYUNAVAILABLE_V2, self)
+			return
 		can_attack = false
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
@@ -95,8 +103,12 @@ func _input(_event: InputEvent) -> void:
 		projectile.damage = PROJECTILE_DAMAGE
 		add_sibling(projectile)
 		attack_timer.start()
+		Wwise.post_event_id(AK.EVENTS.PLAY_PLAYER_ATTACK, self)
 		
-	if Input.is_action_just_pressed("knockback") and can_knockback:
+	if Input.is_action_just_pressed("knockback"):
+		if not can_knockback:
+			Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERABILITYUNAVAILABLE_V2, self)
+			return
 		# add knockback particles onto global world
 		var knockback_particles = knockback_particles_scene.instantiate()
 		add_sibling(knockback_particles)
@@ -106,6 +118,7 @@ func _input(_event: InputEvent) -> void:
 
 		can_knockback = false
 		_apply_knockback()
+		Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERSHOCKWAVE_V1, self)
 		knockback_timer.start()
 
 		toggle_face()
@@ -125,6 +138,7 @@ func on_absorbed() -> void:
 	$Hitbox.queue_free()
 	EventManager.player_health_changed.emit(0)
 	EventManager.game_over.emit()
+	Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERDEATH_V1, self)
 	
 	z_index = 0
 	set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
@@ -152,6 +166,7 @@ func _on_knockback_cooldown_timer_timeout() -> void:
 
 func _on_hitbox_damage_recieved(_value: float) -> void:
 	EventManager.player_health_changed.emit($Hitbox.health)
+	Wwise.post_event_id(AK.EVENTS.PLAY_PLAYER_DAMAGE, self)
 	if $Hitbox.health <= 0:
 		on_absorbed()
 
@@ -177,6 +192,7 @@ func _on_dash_damage_area_area_entered(area: Area2D) -> void:
 			area.entity.on_absorbed()
 			on_win(area.entity)
 			EventManager.player_health_changed.emit($Hitbox.health)
+			Wwise.post_event_id(AK.EVENTS.PLAY_PLAYER_ABSORB, self)
 		else:
 			area.on_damage_recieved(DASH_DAMAGE)
 

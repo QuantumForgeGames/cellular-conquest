@@ -28,6 +28,7 @@ func _on_knockback_cooldown_timer_timeout () -> void:
 
 
 func _apply_knockback () -> void:
+    Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERSHOCKWAVE_V1, self)
     var knockback_particles = knockback_particles_scene.instantiate()
     add_sibling(knockback_particles)
     knockback_particles.global_position = entity.global_position

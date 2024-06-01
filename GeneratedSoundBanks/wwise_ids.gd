@@ -1,37 +1,126 @@
 class_name AK
 
 class EVENTS:
+
+	const PLAY_BURNERON_V1 = 847665841
+	const PLAY_BURNERLOOP_V1 = 1540338042
+	const PLAY_BOOSTERGUY_BOOST = 630048419
+	const PLAY_BOOSTERGUY_DAMAGE = 2574480589
+	const PLAY_BOOSTERGUY_VOX = 1790324233
+	const PLAY_PLAYER_ABSORB = 592870319
+	const PLAY_CACTUS_CUBE_VOX = 231297431
+	const PLAY_CACTUS_CUBE_ATTACK = 2670409596
+	const PLAY_CACTUS_CUBE_DAMAGE = 1188986259
+	const PLAY_PLAYER_LOCOMOTION_BOOSTS = 21570674
+	const PLAY_PLAYER_DAMAGE = 3638125099
+	const PLAY_ENVIRONMENT2D_V2 = 1597649194
+	const PLAY_PLAYERSHOCKWAVE_V1 = 312702222
+	const PLAY_PLAYERDEATH_V1 = 3713826775
+	const PLAY_PLAYERABILITYUNAVAILABLE_V2 = 624721480
+	const PLAY_TEST = 3187507146
+	const PLAY_PLAYER_ATTACK = 3238800884
+	const PLAY_HOVER_V1 = 2172948728
+	const PLAY_SETTINGS_V1 = 1080380695
+	const PLAY_PLAY_V1 = 3746962728
+	const PLAY_AMBIENCE_V1 = 1068589722
+	const PLAY_PAUSE_V1 = 4147221584
+
 	const _dict = {
+		"Play_BurnerOn_V1": PLAY_BURNERON_V1,
+		"Play_BurnerLoop_V1": PLAY_BURNERLOOP_V1,
+		"Play_BoosterGuy_Boost": PLAY_BOOSTERGUY_BOOST,
+		"Play_BoosterGuy_Damage": PLAY_BOOSTERGUY_DAMAGE,
+		"Play_BoosterGuy_Vox": PLAY_BOOSTERGUY_VOX,
+		"Play_Player_Absorb": PLAY_PLAYER_ABSORB,
+		"Play_Cactus_Cube_Vox": PLAY_CACTUS_CUBE_VOX,
+		"Play_Cactus_Cube_Attack": PLAY_CACTUS_CUBE_ATTACK,
+		"Play_Cactus_Cube_Damage": PLAY_CACTUS_CUBE_DAMAGE,
+		"Play_Player_Locomotion_Boosts": PLAY_PLAYER_LOCOMOTION_BOOSTS,
+		"Play_Player_Damage": PLAY_PLAYER_DAMAGE,
+		"Play_Environment2D_V2": PLAY_ENVIRONMENT2D_V2,
+		"Play_PlayerShockwave_V1": PLAY_PLAYERSHOCKWAVE_V1,
+		"Play_PlayerDeath_V1": PLAY_PLAYERDEATH_V1,
+		"Play_PlayerAbilityUnavailable_V2": PLAY_PLAYERABILITYUNAVAILABLE_V2,
+		"Play_TEST": PLAY_TEST,
+		"Play_Player_Attack": PLAY_PLAYER_ATTACK,
+		"Play_Hover_V1": PLAY_HOVER_V1,
+		"Play_Settings_V1": PLAY_SETTINGS_V1,
+		"Play_Play_V1": PLAY_PLAY_V1,
+		"Play_Ambience_V1": PLAY_AMBIENCE_V1,
+		"Play_Pause_V1": PLAY_PAUSE_V1
 	}
 
 class STATES:
-	const _dict = {
-	}
+
+	const _dict = {}
 
 class SWITCHES:
-	const _dict = {
-	}
+
+	const _dict = {}
 
 class GAME_PARAMETERS:
+
+	const SS_AIR_TURBULENCE = 4160247818
+	const SS_AIR_STORM = 3715662592
+	const SS_AIR_RPM = 822163944
+	const SS_AIR_SIZE = 3074696722
+	const SS_AIR_TIMEOFDAY = 3203397129
+	const SS_AIR_FEAR = 1351367891
+	const SS_AIR_PRESENCE = 3847924954
+	const SS_AIR_FREEFALL = 3002758120
+	const SS_AIR_FURY = 1029930033
+	const SS_AIR_MONTH = 2648548617
+
 	const _dict = {
+		"SS_Air_Turbulence": SS_AIR_TURBULENCE,
+		"SS_Air_Storm": SS_AIR_STORM,
+		"SS_Air_RPM": SS_AIR_RPM,
+		"SS_Air_Size": SS_AIR_SIZE,
+		"SS_Air_TimeOfDay": SS_AIR_TIMEOFDAY,
+		"SS_Air_Fear": SS_AIR_FEAR,
+		"SS_Air_Presence": SS_AIR_PRESENCE,
+		"SS_Air_Freefall": SS_AIR_FREEFALL,
+		"SS_Air_Fury": SS_AIR_FURY,
+		"SS_Air_Month": SS_AIR_MONTH
 	}
 
 class TRIGGERS:
-	const _dict = {
-	}
+
+	const _dict = {}
 
 class BANKS:
+
+	const INIT = 1355168291
+	const MAIN = 3161908922
+
 	const _dict = {
+		"Init": INIT,
+		"Main": MAIN
 	}
 
 class BUSSES:
+
+	const MASTER_AUDIO_BUS = 3803692087
+
 	const _dict = {
+		"Master Audio Bus": MASTER_AUDIO_BUS
 	}
 
 class AUX_BUSSES:
-	const _dict = {
-	}
+
+	const _dict = {}
 
 class AUDIO_DEVICES:
+
+	const SYSTEM = 3859886410
+	const NO_OUTPUT = 2317455096
+
 	const _dict = {
+		"System": SYSTEM,
+		"No_Output": NO_OUTPUT
 	}
+
+class EXTERNAL_SOURCES:
+
+	const _dict = {}
+
