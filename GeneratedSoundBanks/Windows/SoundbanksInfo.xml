@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>../../../../../Wwise_Project/GodotGameJam01</ProjectRoot>
-		<SourceFilesRoot>../../../../../Wwise_Project/GodotGameJam01/.cache/Windows</SourceFilesRoot>
+		<ProjectRoot>../../../../../Downloads/To Install/GodotGameJam01</ProjectRoot>
+		<SourceFilesRoot>../../../../../Downloads/To Install/GodotGameJam01/.cache/Windows</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../../../Wwise_Project/GodotGameJam01/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../../../Downloads/To Install/GodotGameJam01/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
@@ -162,7 +162,7 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{BE9084FC-0EFF-CB7E-A4BC-58E38556A21F}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{6FF924F3-754D-A0CB-AFAB-BC3CB42DF4E3}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -176,19 +176,19 @@
 				</File>
 				<File Id="39529689" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerAttack1_V2.wav</ShortName>
-					<CachePath>SFX/PlayerAttack1_V2_4823BFDC.wem</CachePath>
+					<CachePath>SFX/PlayerAttack1_V2_7CB19B7D.wem</CachePath>
 				</File>
 				<File Id="93922265" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerAbsorb3_V2.wav</ShortName>
-					<CachePath>SFX/PlayerAbsorb3_V2_493BF96B.wem</CachePath>
+					<CachePath>SFX/PlayerAbsorb3_V2_D98D18BE.wem</CachePath>
 				</File>
 				<File Id="144764208" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerBoost2_V2.wav</ShortName>
-					<CachePath>SFX/PlayerBoost2_V2_36237239.wem</CachePath>
+					<CachePath>SFX/PlayerBoost2_V2_F562B977.wem</CachePath>
 				</File>
 				<File Id="171751750" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerAttack2_V2.wav</ShortName>
-					<CachePath>SFX/PlayerAttack2_V2_92114173.wem</CachePath>
+					<CachePath>SFX/PlayerAttack2_V2_8A0E9BA6.wem</CachePath>
 				</File>
 				<File Id="197262200" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BoosterGuyBoost2_V1.wav</ShortName>
@@ -196,7 +196,7 @@
 				</File>
 				<File Id="254012937" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerBoost3_V2.wav</ShortName>
-					<CachePath>SFX/PlayerBoost3_V2_3E868533.wem</CachePath>
+					<CachePath>SFX/PlayerBoost3_V2_3D1010E7.wem</CachePath>
 				</File>
 				<File Id="319122083" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Play_V1.wav</ShortName>
@@ -204,7 +204,7 @@
 				</File>
 				<File Id="324221713" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerDamage3_V2.wav</ShortName>
-					<CachePath>SFX/PlayerDamage3_V2_8671A2F4.wem</CachePath>
+					<CachePath>SFX/PlayerDamage3_V2_EBC56F04.wem</CachePath>
 				</File>
 				<File Id="329615433" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BoosterGuyBoost1_V1.wav</ShortName>
@@ -216,7 +216,7 @@
 				</File>
 				<File Id="411790071" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerAbsorb1_V2.wav</ShortName>
-					<CachePath>SFX/PlayerAbsorb1_V2_93D9D760.wem</CachePath>
+					<CachePath>SFX/PlayerAbsorb1_V2_001E1D83.wem</CachePath>
 				</File>
 				<File Id="413541021" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Pause_V1.wav</ShortName>
@@ -228,7 +228,7 @@
 				</File>
 				<File Id="565495120" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerDamage_V2.wav</ShortName>
-					<CachePath>SFX/PlayerDamage_V2_B65548F8.wem</CachePath>
+					<CachePath>SFX/PlayerDamage_V2_BEF08E3C.wem</CachePath>
 				</File>
 				<File Id="622472134" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Environment2D_V2.wav</ShortName>
@@ -248,7 +248,7 @@
 				</File>
 				<File Id="739529342" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerAbsorb2_V2.wav</ShortName>
-					<CachePath>SFX/PlayerAbsorb2_V2_87D8DAA8.wem</CachePath>
+					<CachePath>SFX/PlayerAbsorb2_V2_DD200D27.wem</CachePath>
 				</File>
 				<File Id="739741689" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BoosterGuyVox1_V1.wav</ShortName>
@@ -256,23 +256,23 @@
 				</File>
 				<File Id="743139677" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerBoost1_V2.wav</ShortName>
-					<CachePath>SFX/PlayerBoost1_V2_01451953.wem</CachePath>
+					<CachePath>SFX/PlayerBoost1_V2_89533A0F.wem</CachePath>
 				</File>
 				<File Id="746547299" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerAttack3_V2.wav</ShortName>
-					<CachePath>SFX/PlayerAttack3_V2_06F5E090.wem</CachePath>
+					<CachePath>SFX/PlayerAttack3_V2_CAE5DB73.wem</CachePath>
 				</File>
 				<File Id="768296320" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerAttack4_V2.wav</ShortName>
-					<CachePath>SFX/PlayerAttack4_V2_7A12F1AD.wem</CachePath>
+					<CachePath>SFX/PlayerAttack4_V2_C90C9A41.wem</CachePath>
 				</File>
 				<File Id="872705193" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>CactusCubeVox2_V1.wav</ShortName>
-					<CachePath>SFX/CactusCubeVox2_V1_2CEDDE87.wem</CachePath>
+					<CachePath>SFX/CactusCubeVox2_V1_9AC7385C.wem</CachePath>
 				</File>
 				<File Id="880923014" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>CactusCubeDamage3_V1.wav</ShortName>
-					<CachePath>SFX/CactusCubeDamage3_V1_D075624A.wem</CachePath>
+					<CachePath>SFX/CactusCubeDamage3_V1_EEAFB7B7.wem</CachePath>
 				</File>
 				<File Id="888821648" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>BoosterGuyVox3_V1.wav</ShortName>
@@ -288,23 +288,23 @@
 				</File>
 				<File Id="977489576" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Ambience_V1.wav</ShortName>
-					<CachePath>SFX/Ambience_V1_ACBD6F1D.wem</CachePath>
+					<CachePath>SFX/Ambience_V1_EB08E61C.wem</CachePath>
 				</File>
 				<File Id="978317848" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>PlayerShockwave_V1.wav</ShortName>
-					<CachePath>SFX/PlayerShockwave_V1_AAB264F6.wem</CachePath>
+					<CachePath>SFX/PlayerShockwave_V1_904966D4.wem</CachePath>
 				</File>
 				<File Id="994815928" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Hover_V1.wav</ShortName>
-					<CachePath>SFX/Hover_V1_3ECE4CAD.wem</CachePath>
+					<CachePath>SFX/Hover_V1_980C49F3.wem</CachePath>
 				</File>
 				<File Id="1031069105" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>CactusCubeDamage2_V1.wav</ShortName>
-					<CachePath>SFX/CactusCubeDamage2_V1_DEB11304.wem</CachePath>
+					<CachePath>SFX/CactusCubeDamage2_V1_E90F8A87.wem</CachePath>
 				</File>
 				<File Id="1039611449" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>CactusCubeDamage1_V1.wav</ShortName>
-					<CachePath>SFX/CactusCubeDamage1_V1_4A80F32D.wem</CachePath>
+					<CachePath>SFX/CactusCubeDamage1_V1_F4E467BE.wem</CachePath>
 				</File>
 				<File Id="1049040506" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>CactusCubeAttack4_V2.wav</ShortName>
@@ -354,8 +354,11 @@
 				</Event>
 				<Event Id="1790324233" Name="Play_BoosterGuy_Vox">
 					<MediaRefs>
+						<MediaRef Id="197262200"/>
+						<MediaRef Id="329615433"/>
 						<MediaRef Id="739741689"/>
 						<MediaRef Id="888821648"/>
+						<MediaRef Id="952790639"/>
 						<MediaRef Id="1056220285"/>
 					</MediaRefs>
 				</Event>
@@ -472,5 +475,9 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
+<<<<<<< HEAD
 	<FileHash>{DC7924F6-E33A-5846-10ED-26F968F4A92B}</FileHash>
+=======
+	<FileHash>{64196A10-13EB-ADCA-5FE6-BDE4884C1B38}</FileHash>
+>>>>>>> 482ac2d (audio connections slowly being put into place)
 </SoundBanksInfo>

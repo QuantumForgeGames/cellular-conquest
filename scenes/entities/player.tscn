@@ -76,6 +76,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashDamageArea"]
 shape = SubResource("CircleShape2D_61xsj")
 
+[node name="AkListener2D" type="AkListener2D" parent="."]
+
 [connection signal="damage_recieved" from="Hitbox" to="." method="_on_hitbox_damage_recieved"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="KnockbackCooldownTimer" to="." method="_on_knockback_cooldown_timer_timeout"]
