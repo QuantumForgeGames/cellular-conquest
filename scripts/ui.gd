@@ -7,6 +7,12 @@ extends CanvasLayer
 @onready var dash_cooldown_timer: Timer = player.dash_timer
 @onready var dash_ability_cooldown: TextureRect = $Control/MarginContainer/HBoxContainer/DashAbility
 
+@onready var knockback_cooldown_timer: Timer = player.knockback_timer
+@onready var knockback_ability_cooldown: TextureRect = $Control/MarginContainer/HBoxContainer/KnockbackAbility
+
+@onready var shoot_cooldown_timer: Timer = player.attack_timer
+@onready var shoot_ability_cooldown: TextureRect = $Control/MarginContainer/HBoxContainer/ShootAbility
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventManager.player_health_changed.connect(_on_player_health_changed)
@@ -19,6 +25,16 @@ func _process(delta):
 		dash_ability_cooldown.set_progress((1 - (dash_cooldown_timer.time_left / dash_cooldown_timer.wait_time)) * 100)
 	else:
 		dash_ability_cooldown.set_progress(100.0)
+
+	if knockback_cooldown_timer.time_left != 0:
+		knockback_ability_cooldown.set_progress((1 - (knockback_cooldown_timer.time_left / knockback_cooldown_timer.wait_time)) * 100)
+	else:
+		knockback_ability_cooldown.set_progress(100.0)
+
+	if shoot_cooldown_timer.time_left != 0:
+		shoot_ability_cooldown.set_progress((1 - (shoot_cooldown_timer.time_left / shoot_cooldown_timer.wait_time)) * 100)
+	else:
+		shoot_ability_cooldown.set_progress(100.0)
 
 func _on_player_health_changed(health: int):
 	size_value.text = str(health)

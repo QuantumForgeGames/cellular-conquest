@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3cto6cxlu6de"]
+[gd_scene load_steps=15 format=3 uid="uid://b3cto6cxlu6de"]
 
 [ext_resource type="Script" path="res://scripts/entities/tooth_dasher/tooth_dasher.gd" id="1_flce0"]
-[ext_resource type="Texture2D" uid="uid://dunifc7yxn3e7" path="res://assets/art/entities/tooth_dasher/Teeth_Body.png" id="1_nvyt6"]
-[ext_resource type="Texture2D" uid="uid://c02tbmuvu60fa" path="res://assets/art/entities/tooth_dasher/Teeth_Upset.png" id="2_dwtag"]
-[ext_resource type="Texture2D" uid="uid://di2ic6dn3efuj" path="res://assets/art/entities/tooth_dasher/Teeth_Neutral.png" id="3_71w0q"]
+[ext_resource type="Texture2D" uid="uid://kialvixb8a5f" path="res://assets/art/entities/tooth_dasher/Teeth_Body.png" id="1_nvyt6"]
+[ext_resource type="Texture2D" uid="uid://bky5qwpyghr0o" path="res://assets/art/entities/tooth_dasher/Teeth_Upset.png" id="2_dwtag"]
+[ext_resource type="Texture2D" uid="uid://cesg4ghvl4m3d" path="res://assets/art/entities/tooth_dasher/Teeth_Neutral.png" id="3_71w0q"]
 [ext_resource type="PackedScene" uid="uid://cy6iv24ne4unh" path="res://scenes/entities/hitbox.tscn" id="4_vuqhh"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="5_f81nh"]
 [ext_resource type="Script" path="res://scripts/entities/tooth_dasher/idle_state.gd" id="7_cwb7k"]
 [ext_resource type="Script" path="res://scripts/entities/tooth_dasher/chase_state.gd" id="8_ycsmn"]
 [ext_resource type="Script" path="res://scripts/entities/tooth_dasher/rage_state.gd" id="9_0xy72"]
+[ext_resource type="Script" path="res://scripts/entities/cactus_cube/knockback_state.gd" id="10_clf6m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcguw"]
 radius = 25.0
@@ -21,9 +22,12 @@ height = 100.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6wgtv"]
 radius = 608.139
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_gl323"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_euqeo"]
+radius = 49.163
 
 [node name="ToothDasher" type="CharacterBody2D" node_paths=PackedStringArray("dash_cooldown_timer", "dash_wait_timer", "angry_face", "neutral_face")]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_flce0")
 dash_cooldown_timer = NodePath("DashCooldownTimer")
 dash_wait_timer = NodePath("DashWaitTimer")
@@ -71,14 +75,17 @@ entity = NodePath("../..")
 script = ExtResource("9_0xy72")
 entity = NodePath("../..")
 
+[node name="Knockback" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity")]
+script = ExtResource("10_clf6m")
+entity = NodePath("../..")
+
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_6wgtv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("SegmentShape2D_gl323")
-one_way_collision = true
+shape = SubResource("CircleShape2D_euqeo")
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
 wait_time = 4.5

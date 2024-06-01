@@ -1,4 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgaq2412shtkp"]
+[gd_scene load_steps=10 format=3 uid="uid://dgaq2412shtkp"]
+
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_jiuba"]
 [ext_resource type="Texture2D" uid="uid://7cjxymqc5067" path="res://assets/art/entities/player/body.png" id="2_wdg0t"]
@@ -12,6 +13,12 @@ radius = 49.0408
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7gxpx"]
 radius = 48.3735
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xprc"]
+radius = 506.077
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_61xsj"]
+radius = 47.0425
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jiuba")
@@ -45,10 +52,31 @@ shape = SubResource("CircleShape2D_7gxpx")
 [node name="DashCooldownTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="KnockbackCooldownTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [node name="AttackCooldownTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
 
+[node name="KnockbackArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackArea"]
+shape = SubResource("CircleShape2D_8xprc")
+
+[node name="DashDamageArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashDamageArea"]
+shape = SubResource("CircleShape2D_61xsj")
+
 [connection signal="damage_recieved" from="Hitbox" to="." method="_on_hitbox_damage_recieved"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
+[connection signal="timeout" from="KnockbackCooldownTimer" to="." method="_on_knockback_cooldown_timer_timeout"]
 [connection signal="timeout" from="AttackCooldownTimer" to="." method="_on_attack_cooldown_timer_timeout"]
+[connection signal="area_entered" from="DashDamageArea" to="." method="_on_dash_damage_area_area_entered"]

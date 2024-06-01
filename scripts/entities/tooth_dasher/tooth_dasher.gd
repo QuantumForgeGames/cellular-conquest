@@ -21,9 +21,13 @@ func _ready () -> void:
 	EventManager.game_over.connect(_on_game_over)
 
 func on_absorbed () -> void:
+	$Hitbox.queue_free()
 	died.emit(self)
-	queue_free() # should call Organism.on_absorbed version
-
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector2(0, 0), 0.5)
+	tween.tween_callback(queue_free)
+	
 func _on_hitbox_damage_received (_value :int) -> void:
 	if $Hitbox.health <= 0:
 		on_absorbed()
