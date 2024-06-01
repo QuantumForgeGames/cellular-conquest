@@ -18,7 +18,7 @@ var size_tween: Tween = null
 
 func update_size(old_health: int, current_health: int):
 	if not entity.is_zooming:
-		var target_scale: Vector2 = (EnemySpawner.global_scale_factor * SIZE_SCALE_FACTOR * (current_health - BASE_HEALTH) + BASE_SIZE) * Vector2.ONE
+		var target_scale: Vector2 = (GameHandler.global_scale_factor * SIZE_SCALE_FACTOR * (current_health - BASE_HEALTH) + BASE_SIZE) * Vector2.ONE
 		if size_tween: size_tween.kill()
 		size_tween = get_tree().create_tween()
 		size_tween.tween_property(entity, "scale", target_scale, SIZE_TWEEN_RATE * abs(current_health - old_health))

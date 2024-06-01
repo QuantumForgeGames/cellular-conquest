@@ -40,8 +40,11 @@ var is_knockback :bool = false
 # Other
 @onready var camera := $Camera2D
 @export var knockback_particles_scene: PackedScene
+@export var MAX_RESCALE_COUNT: int = 1
 var is_zooming := false
 var global_scale_factor: float = 1.0
+var rescale_count: int = 0
+
 
 # Player Stats
 var cactus_points: int = 0
@@ -179,17 +182,27 @@ func _on_dash_damage_area_area_entered(area: Area2D) -> void:
 
 func _on_player_health_changed(health: int) -> void:
 	if (0.25 * $Body.texture.get_width() * scale.y) * camera.zoom.y >= (0.6 * get_viewport_rect().size.y) and not is_zooming:
-		is_zooming = true
-		var scale_factor = 0.2
-		var duration = 4.
-		
-		if $Hitbox.size_tween: $Hitbox.size_tween.kill()
-		$Hitbox.size_tween = get_tree().create_tween()
-		$Hitbox.size_tween.tween_property(self, "scale", scale_factor * scale, duration)
-		$Hitbox.size_tween.tween_callback(func (): is_zooming = false)
-		EnemySpawner.global_scale_factor *= scale_factor
-		global_scale_factor *= scale_factor
-		EnemySpawner.scale_enemies(scale_factor, duration, global_position)
+		rescale_count += 1
+		if rescale_count < MAX_RESCALE_COUNT:
+			is_zooming = true
+			var scale_factor = 0.2
+			var duration = 4.
+			
+			if $Hitbox.size_tween: $Hitbox.size_tween.kill()
+			$Hitbox.size_tween = get_tree().create_tween()
+			$Hitbox.size_tween.tween_property(self, "scale", scale_factor * scale, duration)
+			$Hitbox.size_tween.tween_callback(func (): is_zooming = false)
+			GameHandler.global_scale_factor *= scale_factor
+			global_scale_factor *= scale_factor
+			EnemySpawner.scale_enemies(scale_factor, duration, global_position)
+		else: 
+			if is_instance_valid(EnemySpawner):
+				EnemySpawner.destroy()
+				process_mode = Node.PROCESS_MODE_DISABLED
+				var tween = get_tree().create_tween()
+				var target_scale = 4 * get_viewport_rect().size.y * 6.0 / $Body.texture.get_width()
+				tween.tween_property(self, "scale", Vector2(target_scale, target_scale), 5.)
+				tween.tween_callback(func(): SceneTransition.change_scene("res://scenes/menus/game_win.tscn"))
 
 func upgrade_abilities():
 	# logic goes here for changing ability strengths based on stats

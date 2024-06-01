@@ -10,7 +10,6 @@ const RESPAWN_DISTANCE = 2000.0
 @export var _enemy_data :Array[EnemyData] = []
 
 var _enemies :Dictionary = {} 
-var global_scale_factor := 1.0
 
 var SpawnRoot :Node2D :
 	set(value): 
@@ -50,7 +49,7 @@ func _find_enemy_spawn_location () -> Vector2:
 func _spawn_enemy (enemy_data :EnemyData, index :int) -> void:
 	var enemy = enemy_data.scene.instantiate()
 	enemy.global_position = _find_enemy_spawn_location()
-	enemy.initial_health = randi_range(8, 15) / EnemySpawner.global_scale_factor
+	enemy.initial_health = randi_range(8, 12) / GameHandler.global_scale_factor
 	enemy.died.connect(_on_enemy_died.bind(index))
 	_enemies[index].instances.append(enemy)
 	SpawnRoot.add_child.call_deferred(enemy)
@@ -76,5 +75,12 @@ func _on_enemy_died (enemy, index :int) -> void:
 func scale_enemies(scale_factor: float, duration: float, pos: Vector2) -> void:
 	for enemy_type in _enemies.values(): 
 		for enemy in enemy_type.instances:
-			enemy.global_scale_factor = global_scale_factor
+			enemy.global_scale_factor = GameHandler.global_scale_factor
 			enemy.zoom(scale_factor, duration, pos)
+
+func destroy() -> void:
+	for enemy_type in _enemies.values(): 
+		for enemy in enemy_type.instances:
+			enemy.queue_free()
+		
+	queue_free()

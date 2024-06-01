@@ -21,6 +21,7 @@ EventManager="*res://scripts/globals/event_manager.gd"
 SceneTransition="*res://scenes/menus/scene_transition.tscn"
 WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
 EnemySpawner="*res://scenes/globals/enemy_spawner.tscn"
+GameHandler="*res://scripts/globals/game_handler.gd"
 
 [display]
 

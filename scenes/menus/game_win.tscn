@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsq2ijcwmap6h"]
+
+[ext_resource type="Texture2D" uid="uid://djjpmb1ygm6ap" path="res://assets/art/backgrounds/WinScreen.png" id="1_fcsxv"]
+
+[node name="GameWin" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.0
+anchor_bottom = 27.0
+offset_right = -1880.0
+offset_bottom = -1040.0
+texture = ExtResource("1_fcsxv")
