@@ -17,3 +17,24 @@ position = Vector2(853, 575)
 
 [node name="EnemyRoot" type="Node2D" parent="."]
 script = ExtResource("3_m4x4b")
+
+[node name="AkBank" type="AkBank" parent="."]
+bank = {
+"id": 1355168291,
+"name": "Init"
+}
+load_on = 1
+
+[node name="AkBank" type="AkBank" parent="AkBank"]
+bank = {
+"id": 3161908922,
+"name": "Main"
+}
+load_on = 1
+
+[node name="AkEvent2D" type="AkEvent2D" parent="."]
+event = {
+"id": 1597649194,
+"name": "Play_Environment2D_V2"
+}
+trigger_on = 2

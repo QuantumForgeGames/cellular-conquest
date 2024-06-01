@@ -14,6 +14,7 @@ extends Organism
 var target: Player = null
 
 func _ready() -> void:
+	Wwise.register_game_obj(self, self.name)
 	$Hitbox.health = initial_health
 	EventManager.game_over.connect(_on_game_over)
 
@@ -27,10 +28,12 @@ func on_absorbed() -> void:
 	tween.tween_callback(queue_free)
 	
 func _on_hitbox_damage_received (_value :int) -> void:
+	Wwise.post_event_id(AK.EVENTS.PLAY_BOOSTERGUY_DAMAGE, self)
 	if $Hitbox.health <= 0:
 		on_absorbed()
 
 func set_angry_face() -> void:
+	Wwise.post_event_id(AK.EVENTS.PLAY_BOOSTERGUY_VOX, self)
 	angry_face.visible = true
 	neutral_face.visible = false
 
