@@ -1,6 +1,7 @@
 extends State
 
 @export var entity: CactusCube
+var enraged: bool = false
 
 func enter() -> void:
 	entity.set_angry_face()
@@ -28,3 +29,9 @@ func _on_rage_timer_timeout() -> void:
 func _on_shoot_cooldown_timer_timeout() -> void:
 	entity.launch_spikes()
 	entity.call_deferred("spawn_spikes")
+	
+func on_damage_recieved(_damage: int) -> void:
+	if (entity.scale.x < entity.target.scale.x) and not enraged:
+		enraged = true
+		entity.shoot_cooldown_timer.wait_time = 0.5 * entity.shoot_cooldown_timer.wait_time
+

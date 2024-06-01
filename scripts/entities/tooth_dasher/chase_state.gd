@@ -16,8 +16,11 @@ func process(_delta: float) -> void:
 	if entity.target == null: return
 	var direction = entity.target.global_position - entity.global_position
 	var angle_to_target = (direction).angle()
-	entity.rotation = lerp_angle(entity.rotation, angle_to_target + PI/2, 0.1)
-	entity.velocity = direction.normalized() * entity.CHASE_SPEED
+	var scale_factor = int(entity.scale.x > entity.target.scale.x)
+
+	entity.rotation = lerp_angle(entity.rotation, angle_to_target + PI/2 + PI * scale_factor, 0.1)
+	entity.velocity = (2 * scale_factor - 1) * direction.normalized() * entity.CHASE_SPEED	
+
 	entity.move_and_slide()
 
 
