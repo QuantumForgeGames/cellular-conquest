@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://uxxmehrney0d"]
+
+[ext_resource type="Script" path="res://scripts/entities/knockback.gd" id="1_v7l1y"]
+[ext_resource type="Texture2D" uid="uid://chdeylwa4545i" path="res://assets/art/kenney/smoke_04.png" id="2_0atbq"]
+
+[sub_resource type="Gradient" id="Gradient_k1oxh"]
+offsets = PackedFloat32Array(0, 0.823741)
+colors = PackedColorArray(1, 1, 1, 1, 0.75, 0, 0.682565, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1l4hk"]
+gradient = SubResource("Gradient_k1oxh")
+
+[sub_resource type="Curve" id="Curve_jxffk"]
+min_value = -1.0
+_data = [Vector2(0, -0.93979), 0.0, 0.0, 0, 0, Vector2(0.588235, 0.387435), 0.0, 0.0, 0, 0, Vector2(1, 0.591623), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_arqi5"]
+curve = SubResource("Curve_jxffk")
+
+[sub_resource type="Curve" id="Curve_8donu"]
+max_value = 12.0
+_data = [Vector2(0.0784314, 12), 0.0, 0.0, 0, 0, Vector2(0.20915, 0), -2.4699, 0.0, 0, 0, Vector2(0.313725, 12), -3.47121, 0.0, 0, 0, Vector2(0.598039, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_i106j"]
+curve = SubResource("Curve_8donu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nkror"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 20.0
+angle_max = 360.0
+radial_velocity_min = 50.0
+radial_velocity_max = 50.0
+radial_velocity_curve = SubResource("CurveTexture_i106j")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.05
+color_ramp = SubResource("GradientTexture1D_1l4hk")
+hue_variation_max = 0.06
+hue_variation_curve = SubResource("CurveTexture_arqi5")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 7848
+amount_ratio = 0.15
+process_material = SubResource("ParticleProcessMaterial_nkror")
+texture = ExtResource("2_0atbq")
+lifetime = 0.5
+one_shot = true
+script = ExtResource("1_v7l1y")
