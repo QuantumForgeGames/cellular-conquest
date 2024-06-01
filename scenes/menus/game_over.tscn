@@ -1,25 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://c55tmlm50m3t7"]
+[gd_scene load_steps=8 format=3 uid="uid://bwjmciynbpo5o"]
 
-[ext_resource type="Texture2D" uid="uid://dmm5m6cowwg1f" path="res://assets/art/game_over/Game_Over_Text.png" id="1_d6lpc"]
-[ext_resource type="Texture2D" uid="uid://c2ni8ia2dotfh" path="res://assets/art/game_over/Skull.png" id="2_ifwox"]
-[ext_resource type="Texture2D" uid="uid://b8kj6pywigwdv" path="res://assets/art/game_over/Menu_Normal.png" id="3_1vgad"]
-[ext_resource type="Texture2D" uid="uid://ck04kyp1oco0v" path="res://assets/art/game_over/Menu_Hovered.png" id="4_yiuln"]
-[ext_resource type="Texture2D" uid="uid://cqrx8f7tlu4xh" path="res://assets/art/game_over/Retry_Normal.png" id="5_234a8"]
-[ext_resource type="Texture2D" uid="uid://caagn26x64lqj" path="res://assets/art/game_over/Retry_Hovered.png" id="6_gyxnh"]
+[ext_resource type="Texture2D" uid="uid://d4jmqdn610n8b" path="res://assets/art/game_over/Game_Over_Text.png" id="1_d6lpc"]
+[ext_resource type="Texture2D" uid="uid://ci2didmiwshig" path="res://assets/art/game_over/Skull.png" id="2_ifwox"]
+[ext_resource type="Texture2D" uid="uid://bn2gdl1ubawbh" path="res://assets/art/game_over/Menu_Normal.png" id="3_1vgad"]
+[ext_resource type="Texture2D" uid="uid://btpnb8g2175up" path="res://assets/art/game_over/Menu_Hovered.png" id="4_yiuln"]
+[ext_resource type="Texture2D" uid="uid://b86gvtb02c2ov" path="res://assets/art/game_over/Retry_Normal.png" id="5_234a8"]
+[ext_resource type="Texture2D" uid="uid://knm1hl5kxv8r" path="res://assets/art/game_over/Retry_Hovered.png" id="6_gyxnh"]
 
 [sub_resource type="GDScript" id="GDScript_r411o"]
 script/source = "extends Control
 
 
 func _on_menu_button_pressed():
-    #SceneTransition.change_scene(\"res://scenes/menus/main_menu.tscn\")
-    #get_tree().change_scene_to_file(\"res://scenes/menus/blank.tscn\")
-    get_tree().change_scene_to_file(\"res://scenes/menus/blank.tscn\")
+	#SceneTransition.change_scene(\"res://scenes/menus/main_menu.tscn\")
+	#get_tree().change_scene_to_file(\"res://scenes/menus/blank.tscn\")
+	get_tree().change_scene_to_file(\"res://scenes/menus/blank.tscn\")
 
 
 func _on_retry_button_pressed():
-    print(\"TESTING\")
-    get_tree().reload_current_scene()
+	print(\"TESTING\")
+	get_tree().reload_current_scene()
 "
 
 [node name="GameOver" type="Control"]
