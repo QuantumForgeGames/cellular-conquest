@@ -43,7 +43,8 @@ func _ready() -> void:
 	$Hitbox.health = initial_health
 	EventManager.player_health_changed.emit($Hitbox.health)
 	EventManager.player_health_changed.connect(_on_player_health_changed)
-	
+	EventManager.enemy_died.connect(_on_enemy_died)
+
 func _physics_process(_delta: float) -> void:
 	if is_dashing:
 		velocity = DASH_SPEED * dash_direction
@@ -101,8 +102,12 @@ func on_absorbed() -> void:
 	tween.tween_property(self, "scale", Vector2(0, 0), 1.)
 	tween.tween_callback(queue_free)
 
-func on_win() -> void:
+func on_win(loser: CharacterBody2D) -> void:
 	EventManager.player_health_changed.emit($Hitbox.health)
+	if loser is CactusCube:
+		print("Hi cactus")
+	if loser is ToothDasher:
+		print("hi tooth")
 
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true
@@ -130,6 +135,7 @@ func _on_dash_damage_area_area_entered(area: Area2D) -> void:
 		if scale.x > area.entity.scale.x:
 			$Hitbox.health += area.health
 			area.entity.on_absorbed()
+			on_win(area.entity)
 			EventManager.player_health_changed.emit($Hitbox.health)
 		else:
 			area.on_damage_recieved(DASH_DAMAGE)
@@ -139,3 +145,5 @@ func _on_player_health_changed(health: int) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property(camera, "zoom", 0.2 * camera.zoom, 4.)
 
+func _on_enemy_died(enemy: Organism):
+	pass
