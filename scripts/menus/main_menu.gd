@@ -10,7 +10,7 @@ func _ready () -> void:
 func _on_play_button_pressed():
 	Wwise.post_event_id(AK.EVENTS.PLAY_PLAY_V1, self)
 	# Wwise.post_event_id(AK.EVENTS.PLAY_HOVER_V1, self)
-	SceneTransition.change_scene("res://scenes/levels/world.tscn")
+	SceneTransition.change_scene("res://scenes/menus/instructions.tscn")
 
 
 func _on_settings_button_pressed():

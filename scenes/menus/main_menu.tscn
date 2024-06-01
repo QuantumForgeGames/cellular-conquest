@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c5l0hmlgfok5p" path="res://assets/art/buttons/Title Page_Play_Hover.png" id="4_erjvi"]
 [ext_resource type="Texture2D" uid="uid://dg01nv3eyfwef" path="res://assets/art/buttons/Title Page_Settings.png" id="5_h55sr"]
 [ext_resource type="Texture2D" uid="uid://cagjg1lj8ogry" path="res://assets/art/buttons/Title Page_Settings_Hover.png" id="6_wqgbh"]
+[ext_resource type="Texture2D" uid="uid://dj6il25m7lmy2" path="res://assets/art/backgrounds/Title Page_BG.png" id="2_10iuo"]
+[ext_resource type="Texture2D" uid="uid://bc4hhh3mffit2" path="res://assets/art/buttons/Title Page_Play.png" id="3_055iv"]
+[ext_resource type="Texture2D" uid="uid://1raufynvb0nl" path="res://assets/art/buttons/Title Page_Play_Hover.png" id="4_erjvi"]
+[ext_resource type="Texture2D" uid="uid://old0m4ddmvw3" path="res://assets/art/buttons/Title Page_Settings.png" id="5_h55sr"]
+[ext_resource type="Texture2D" uid="uid://gqerhq3nlkri" path="res://assets/art/buttons/Title Page_Settings_Hover.png" id="6_wqgbh"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
