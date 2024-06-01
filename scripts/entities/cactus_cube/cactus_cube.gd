@@ -1,8 +1,6 @@
 class_name CactusCube
 extends Organism
 
-signal died(enemy)
-
 @export var rage_persistence_timer: Timer
 @export var shoot_cooldown_timer: Timer
 
@@ -20,8 +18,8 @@ func _ready() -> void:
 
 func on_absorbed() -> void:
 	$Hitbox.queue_free()
+	EventManager.enemy_died.emit(self)
 	died.emit(self)
-	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(0, 0), 0.5)
 	tween.tween_callback(queue_free)

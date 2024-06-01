@@ -22,6 +22,7 @@ var can_dash: bool = true
 @onready var attack_timer: Timer = $AttackCooldownTimer
 
 @export var PROJECTILE_SPEED := 1000.
+@export var PROJECTILE_DAMAGE := 1
 
 var projectile_scene := preload("res://scenes/entities/projectile.tscn")
 var can_attack: bool = true
@@ -29,13 +30,27 @@ var can_attack: bool = true
 # Knockback ability
 @onready var knockback_timer: Timer = $KnockbackCooldownTimer
 
-@export var KNOCKBACK_STRENGTH: float = 400.
+@export var KNOCKBACK_STRENGTH: float = 100.
 @export var KNOCKBACK_RADIUS: = 1. # does nothing as of now
 
 var can_knockback: bool = true
 
-# other
+# Other
 @onready var camera := $Camera2D
+@export var knockback_particles_scene: PackedScene
+
+# Player Stats
+var cactus_points: int = 0
+var tooth_points: int = 0
+var bar_points: int = 0
+
+var shoot_level: int = 0
+var dash_level: int = 0 
+var knockback_level: int = 0
+
+var CACTUS_POINT_THRESHOLD: int = 5
+var TOOTH_POINT_THRESHOLD: int = 5
+var BAR_POINT_THRESHOLD: int = 5
 
 func _ready() -> void:
 	z_index = 1
@@ -43,7 +58,7 @@ func _ready() -> void:
 	$Hitbox.health = initial_health
 	EventManager.player_health_changed.emit($Hitbox.health)
 	EventManager.player_health_changed.connect(_on_player_health_changed)
-	
+
 func _physics_process(_delta: float) -> void:
 	if is_dashing:
 		velocity = DASH_SPEED * dash_direction
@@ -68,21 +83,34 @@ func _input(_event: InputEvent) -> void:
 		projectile.velocity = PROJECTILE_SPEED * (get_global_mouse_position() - global_position).normalized()
 		projectile.rotation = projectile.velocity.angle()
 		projectile.scale = scale
+		projectile.damage = PROJECTILE_DAMAGE
 		add_sibling(projectile)
 		attack_timer.start()
 		
 	if Input.is_action_just_pressed("knockback") and can_knockback:
-		$KnockbackParticles.emitting = true
+		# add knockback particles onto global world
+		var knockback_particles = knockback_particles_scene.instantiate()
+		add_sibling(knockback_particles)
+		knockback_particles.global_position = global_position
+		knockback_particles.scale = scale
+		knockback_particles.emitting = true
+
 		can_knockback = false
 		_apply_knockback()
 		knockback_timer.start()
 
+		toggle_face()
+		get_tree().create_timer(0.5).timeout.connect(toggle_face)
+
 func toggle_dash() -> void:
 	is_dashing = not is_dashing
+	toggle_face()
+	$Hitbox/CollisionShape2D.set_deferred("disabled", not $Hitbox/CollisionShape2D.disabled)
+
+func toggle_face() -> void:
 	$Body/NeutralFace.visible = not $Body/NeutralFace.visible
 	$Body/AngryFace.visible = not $Body/AngryFace.visible
-	$Hitbox/CollisionShape2D.set_deferred("disabled", not $Hitbox/CollisionShape2D.disabled)
-	
+
 func on_absorbed() -> void:
 	$Camera2D.reparent(get_parent())
 	$Hitbox.queue_free()
@@ -95,8 +123,14 @@ func on_absorbed() -> void:
 	tween.tween_property(self, "scale", Vector2(0, 0), 1.)
 	tween.tween_callback(queue_free)
 
-func on_win() -> void:
+func on_win(loser: CharacterBody2D) -> void:
 	EventManager.player_health_changed.emit($Hitbox.health)
+	if loser is CactusCube:
+		cactus_points += 1
+	if loser is ToothDasher:
+		tooth_points += 1
+		
+	upgrade_abilities()
 
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true
@@ -124,6 +158,7 @@ func _on_dash_damage_area_area_entered(area: Area2D) -> void:
 		if scale.x > area.entity.scale.x:
 			$Hitbox.health += area.health
 			area.entity.on_absorbed()
+			on_win(area.entity)
 			EventManager.player_health_changed.emit($Hitbox.health)
 		else:
 			area.on_damage_recieved(DASH_DAMAGE)
@@ -133,3 +168,25 @@ func _on_player_health_changed(health: int) -> void:
 		var tween = get_tree().create_tween()
 		tween.tween_property(camera, "zoom", 0.2 * camera.zoom, 4.)
 
+func upgrade_abilities():
+	# logic goes here for changing ability strengths based on stats
+	var new_shoot_level = (cactus_points / CACTUS_POINT_THRESHOLD)
+
+	if shoot_level < new_shoot_level:
+		shoot_level = new_shoot_level
+		PROJECTILE_DAMAGE += 1 # upgrade projectile strength
+		EventManager.skill_level_changed.emit("Shoot", shoot_level)
+		
+	var new_dash_level = (tooth_points / TOOTH_POINT_THRESHOLD)
+
+	if dash_level < new_dash_level:
+		dash_level = new_dash_level
+		DASH_DAMAGE += 1 # upgrade dash damage
+		EventManager.skill_level_changed.emit("Dash", dash_level)
+		
+	var new_knockback_level = (bar_points / BAR_POINT_THRESHOLD)
+
+	if knockback_level < new_knockback_level:
+		knockback_level = new_knockback_level
+		KNOCKBACK_STRENGTH += 50. # upgrade knockback strength
+		EventManager.skill_level_changed.emit("Knockback", shoot_level)

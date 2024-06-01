@@ -16,3 +16,5 @@ func _process (delta :float) -> void:
 	amount_ratio = max(0.15, amount_ratio - (delta * _ratio))
 	_ratio += delta * 10
 
+func _on_finished() -> void:
+	queue_free()

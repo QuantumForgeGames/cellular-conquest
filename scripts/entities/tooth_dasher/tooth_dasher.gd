@@ -1,9 +1,6 @@
 class_name ToothDasher
 extends Organism
 
-signal died(enemy)
-
-
 @export var dash_cooldown_timer :Timer
 @export var dash_wait_timer :Timer
 
@@ -16,14 +13,15 @@ signal died(enemy)
 
 var target: Player = null
 
-func _ready () -> void:
+func _ready() -> void:
 	$Hitbox.health = initial_health
 	EventManager.game_over.connect(_on_game_over)
 
-func on_absorbed () -> void:
+func on_absorbed() -> void:
 	$Hitbox.queue_free()
+	EventManager.enemy_died.emit(self)
 	died.emit(self)
-	
+
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(0, 0), 0.5)
 	tween.tween_callback(queue_free)
