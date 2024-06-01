@@ -45,4 +45,11 @@ func _on_game_over():
 	process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_skill_level_changed(skill: String, level: int):
-	get_node("Control/MarginContainer/HBoxContainer/" + skill + "Ability" + "/Label").text = "LVL " + str(level)
+	var label = get_node("Control/MarginContainer/HBoxContainer/" + skill + "Ability" + "/Label")
+	label.text = "LVL " + str(level)
+	animate_label(label)
+	
+func animate_label(label: Label) -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(label, "scale", Vector2(1.2, 1.2), 0.2)
+	tween.tween_property(label, "scale", Vector2(1., 1.), 0.2)

@@ -47,9 +47,9 @@ var shoot_level: int = 0
 var dash_level: int = 0 
 var knockback_level: int = 0
 
-var CACTUS_POINT_THRESHOLD: int = 10
-var TOOTH_POINT_THRESHOLD: int = 10
-var BAR_POINT_THRESHOLD: int = 10
+var CACTUS_POINT_THRESHOLD: int = 5
+var TOOTH_POINT_THRESHOLD: int = 5
+var BAR_POINT_THRESHOLD: int = 5
 
 func _ready() -> void:
 	z_index = 1
