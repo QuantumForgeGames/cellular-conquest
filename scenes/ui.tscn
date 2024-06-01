@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_pi5ms"]
 [ext_resource type="PackedScene" uid="uid://cc6g5tm1v0gmc" path="res://scenes/menus/ability.tscn" id="3_2qla5"]
 [ext_resource type="Shader" path="res://assets/shaders/ability_ui.gdshader" id="3_c1ixi"]
-[ext_resource type="Texture2D" uid="uid://1a0u0uch7f3e" path="res://assets/art/ui/ShootAbility.png" id="3_odepu"]
-[ext_resource type="Texture2D" uid="uid://drehcv8vi4ifg" path="res://assets/art/ui/StunAbility.png" id="4_fd2ri"]
-[ext_resource type="FontFile" uid="uid://chndxdexfi12d" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="5_lf60s"]
+[ext_resource type="Texture2D" uid="uid://da1mj2qcnw20v" path="res://assets/art/ui/ShootAbility.png" id="3_odepu"]
+[ext_resource type="Texture2D" uid="uid://nep5k2r5g5x7" path="res://assets/art/ui/StunAbility.png" id="4_fd2ri"]
+[ext_resource type="FontFile" uid="uid://ngec52j87kgq" path="res://assets/fonts/DarumadropOne-Regular.ttf" id="5_lf60s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fnffb"]
 resource_local_to_scene = true
