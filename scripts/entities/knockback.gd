@@ -9,10 +9,10 @@ var _radius :float = 0.0
 var _ratio :float = 2.0
 
 func _process (delta :float) -> void:
-    if _radius >= MAX_RADIUS:
-        _ratio = 2.0
-        _radius = 50.0
-        amount_ratio = 1.0
-    amount_ratio = max(0.15, amount_ratio - (delta * _ratio))
-    _ratio += delta * 10
+	if _radius >= MAX_RADIUS:
+		_ratio = 2.0
+		_radius = 50.0
+		amount_ratio = 1.0
+	amount_ratio = max(0.15, amount_ratio - (delta * _ratio))
+	_ratio += delta * 10
 
