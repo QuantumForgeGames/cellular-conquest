@@ -72,6 +72,7 @@ func _input(_event: InputEvent) -> void:
 		attack_timer.start()
 		
 	if Input.is_action_just_pressed("knockback") and can_knockback:
+		$KnockbackParticles.emitting = true
 		can_knockback = false
 		_apply_knockback()
 		knockback_timer.start()

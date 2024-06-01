@@ -22,19 +22,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if dash_cooldown_timer.time_left != 0:
-		dash_ability_cooldown.set_progress((1 - (dash_cooldown_timer.time_left / dash_cooldown_timer.wait_time)) * 100)
+		dash_ability_cooldown.set_progress(1 - (dash_cooldown_timer.time_left / dash_cooldown_timer.wait_time))
 	else:
-		dash_ability_cooldown.set_progress(100.0)
+		dash_ability_cooldown.set_progress(1.0)
 
 	if knockback_cooldown_timer.time_left != 0:
-		knockback_ability_cooldown.set_progress((1 - (knockback_cooldown_timer.time_left / knockback_cooldown_timer.wait_time)) * 100)
+		knockback_ability_cooldown.set_progress(1 - (knockback_cooldown_timer.time_left / knockback_cooldown_timer.wait_time))
 	else:
-		knockback_ability_cooldown.set_progress(100.0)
+		knockback_ability_cooldown.set_progress(1.0)
 
 	if shoot_cooldown_timer.time_left != 0:
-		shoot_ability_cooldown.set_progress((1 - (shoot_cooldown_timer.time_left / shoot_cooldown_timer.wait_time)) * 100)
+		shoot_ability_cooldown.set_progress(1 - (shoot_cooldown_timer.time_left / shoot_cooldown_timer.wait_time))
 	else:
-		shoot_ability_cooldown.set_progress(100.0)
+		shoot_ability_cooldown.set_progress(1.0)
 
 func _on_player_health_changed(health: int):
 	size_value.text = str(health)
