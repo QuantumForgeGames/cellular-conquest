@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/water_effect.gdshader" id="1_qdjes"]
 [ext_resource type="Texture2D" uid="uid://dv2unbnfjqv3r" path="res://assets/gradients/water_effect_color_ramp.tres" id="2_p1rjs"]
 [ext_resource type="FastNoiseLite" uid="uid://ceodwdc4daxew" path="res://assets/noise/water_effect_general_noise.tres" id="3_irqfo"]
-[ext_resource type="Texture2D" uid="uid://0bkaa1b5j8h4" path="res://assets/gradients/water_effect_green_fade.tres" id="4_cbnmr"]
+[ext_resource type="Texture2D" uid="uid://7i0owg2bkhhn" path="res://assets/gradients/water_effect_green_fade.tres" id="4_cbnmr"]
 [ext_resource type="Script" path="res://scripts/entities/water_effect.gd" id="5_bxric"]
 [ext_resource type="Shader" path="res://assets/shaders/ambient_gradient.gdshader" id="5_pefi5"]
 

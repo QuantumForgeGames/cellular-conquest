@@ -79,5 +79,11 @@ event = {
 }
 trigger_on = 2
 
+[node name="AkListener2D" type="AkListener2D" parent="."]
+
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_hover"]
+[connection signal="mouse_exited" from="PlayButton" to="." method="_on_exit_hover"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="SettingsButton" to="." method="_on_hover"]
+[connection signal="mouse_exited" from="SettingsButton" to="." method="_on_exit_hover"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
