@@ -75,4 +75,5 @@ func _on_enemy_died (enemy, index :int) -> void:
 func scale_enemies(scale_factor: float, duration: float, pos: Vector2) -> void:
 	for enemy_type in _enemies.values(): 
 		for enemy in enemy_type.instances:
+			enemy.global_scale_factor = global_scale_factor
 			enemy.zoom(scale_factor, duration, pos)

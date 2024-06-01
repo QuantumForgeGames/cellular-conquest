@@ -6,6 +6,7 @@ signal died(enemy: Organism)
 @export var initial_health: int = 10
 var knockback := Vector2.ZERO
 var is_zooming: bool = false
+var global_scale_factor: float = 1.
 
 func _ready() -> void:
 	$Hitbox.health = initial_health

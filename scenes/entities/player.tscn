@@ -21,18 +21,6 @@ radius = 47.0425
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_jiuba")
-MAX_SPEED = null
-MAX_MOUSE_DIST = null
-initial_health = null
-DASH_SPEED = null
-DASH_DURATION = null
-DASH_DEADZONE = null
-DASH_DAMAGE = null
-PROJECTILE_SPEED = null
-PROJECTILE_DAMAGE = null
-KNOCKBACK_STRENGTH = null
-KNOCKBACK_RADIUS = null
-KNOCKBACK_DURATION = null
 knockback_particles_scene = ExtResource("6_6qg8l")
 
 [node name="Knockback" parent="." instance=ExtResource("6_6qg8l")]

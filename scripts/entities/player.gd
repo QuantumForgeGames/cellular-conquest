@@ -41,6 +41,7 @@ var is_knockback :bool = false
 @onready var camera := $Camera2D
 @export var knockback_particles_scene: PackedScene
 var is_zooming := false
+var global_scale_factor: float = 1.0
 
 # Player Stats
 var cactus_points: int = 0
@@ -187,6 +188,7 @@ func _on_player_health_changed(health: int) -> void:
 		$Hitbox.size_tween.tween_property(self, "scale", scale_factor * scale, duration)
 		$Hitbox.size_tween.tween_callback(func (): is_zooming = false)
 		EnemySpawner.global_scale_factor *= scale_factor
+		global_scale_factor *= scale_factor
 		EnemySpawner.scale_enemies(scale_factor, duration, global_position)
 		
 
