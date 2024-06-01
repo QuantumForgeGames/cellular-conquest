@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://7pc3dynyj3ax"]
+[gd_scene load_steps=6 format=3 uid="uid://7pc3dynyj3ax"]
 
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_ki2df"]
 [ext_resource type="PackedScene" path="res://scenes/entities/background_water_effect.tscn" id="1_ve215"]
 [ext_resource type="PackedScene" uid="uid://dgaq2412shtkp" path="res://scenes/entities/player.tscn" id="1_ypafy"]
 [ext_resource type="Script" path="res://scripts/system/enemy_root.gd" id="3_m4x4b"]
 [ext_resource type="PackedScene" uid="uid://de54r1arpxcg3" path="res://scenes/ui.tscn" id="4_wk5ex"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ki2df")
 
 [node name="BackgroundWaterEffect" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("1_ve215")]
 _Player = NodePath("../Player")
