@@ -12,13 +12,10 @@ script/source = "extends Control
 
 
 func _on_menu_button_pressed():
-	#SceneTransition.change_scene(\"res://scenes/menus/main_menu.tscn\")
-	#get_tree().change_scene_to_file(\"res://scenes/menus/blank.tscn\")
 	get_tree().change_scene_to_file(\"res://scenes/menus/blank.tscn\")
 
 
 func _on_retry_button_pressed():
-	print(\"TESTING\")
 	get_tree().reload_current_scene()
 "
 
@@ -73,7 +70,6 @@ size_flags_vertical = 8
 theme_override_constants/separation = 256
 
 [node name="MenuButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 texture_normal = ExtResource("3_1vgad")
 texture_hover = ExtResource("4_yiuln")

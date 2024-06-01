@@ -69,8 +69,7 @@ _data = {
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
-layer = 2
-visible = false
+layer = 0
 script = ExtResource("1_3q2mq")
 
 [node name="WhiteRectangle" type="ColorRect" parent="."]

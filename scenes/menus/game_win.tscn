@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsq2ijcwmap6h"]
+[gd_scene load_steps=5 format=3 uid="uid://sev1wv3b3psf"]
 
-[ext_resource type="Texture2D" uid="uid://djjpmb1ygm6ap" path="res://assets/art/backgrounds/WinScreen.png" id="1_fcsxv"]
+[ext_resource type="Texture2D" uid="uid://ekj5gaasq4x0" path="res://assets/art/backgrounds/WinScreen.png" id="1_fcsxv"]
+[ext_resource type="Script" path="res://scenes/menus/game_win.gd" id="1_tple4"]
+[ext_resource type="Texture2D" uid="uid://bn2gdl1ubawbh" path="res://assets/art/game_over/Menu_Normal.png" id="3_v0hmj"]
+[ext_resource type="Texture2D" uid="uid://btpnb8g2175up" path="res://assets/art/game_over/Menu_Hovered.png" id="4_r4i1o"]
 
 [node name="GameWin" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_tple4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -16,3 +20,16 @@ anchor_bottom = 27.0
 offset_right = -1880.0
 offset_bottom = -1040.0
 texture = ExtResource("1_fcsxv")
+
+[node name="MenuButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 761.0
+offset_top = 721.0
+offset_right = 1121.0
+offset_bottom = 824.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("3_v0hmj")
+texture_hover = ExtResource("4_r4i1o")
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
