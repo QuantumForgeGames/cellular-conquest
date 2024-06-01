@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://uxxmehrney0d"]
 
 [ext_resource type="Script" path="res://scripts/entities/knockback.gd" id="1_v7l1y"]
-[ext_resource type="Texture2D" uid="uid://chdeylwa4545i" path="res://assets/art/kenney/smoke_04.png" id="2_0atbq"]
+[ext_resource type="Texture2D" uid="uid://e5i365y0xghg" path="res://assets/art/kenney/smoke_04.png" id="2_0atbq"]
 
 [sub_resource type="Gradient" id="Gradient_k1oxh"]
 offsets = PackedFloat32Array(0, 0.823741)

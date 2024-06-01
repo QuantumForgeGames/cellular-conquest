@@ -14,4 +14,6 @@ func process(delta: float) -> void:
 func _on_stun_timeout() -> void:
 	entity.knockback = Vector2.ZERO
 	entity.velocity = Vector2.ZERO
-	transitioned.emit("Idle")
+	# last minute hack :(
+	entity.target = get_tree().get_nodes_in_group("Player")[0]
+	transitioned.emit("Chase")

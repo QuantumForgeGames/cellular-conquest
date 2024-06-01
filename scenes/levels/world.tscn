@@ -10,7 +10,7 @@
 [node name="BackgroundWaterEffect" parent="." node_paths=PackedStringArray("_Player") instance=ExtResource("1_ve215")]
 _Player = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("1_ypafy")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_ypafy")]
 position = Vector2(853, 575)
 
 [node name="UI" parent="." instance=ExtResource("4_wk5ex")]
