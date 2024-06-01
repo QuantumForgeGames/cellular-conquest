@@ -29,8 +29,8 @@ var can_attack: bool = true
 # Knockback ability
 @onready var knockback_timer: Timer = $KnockbackCooldownTimer
 
-@export var knockback_strength: float = 1.
-@export var knockback_radius: = 1. # does nothing as of now
+@export var KNOCKBACK_STRENGTH: float = 400.
+@export var KNOCKBACK_RADIUS: = 1. # does nothing as of now
 
 var can_knockback: bool = true
 
@@ -89,7 +89,7 @@ func on_absorbed() -> void:
 	EventManager.game_over.emit()
 	
 	z_index = 0
-	process_mode = Node.PROCESS_MODE_DISABLED
+	set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(0, 0), 1.)
 	tween.tween_callback(queue_free)
@@ -113,7 +113,10 @@ func _on_hitbox_damage_recieved(_value: float) -> void:
 
 func _apply_knockback():
 	for body in $KnockbackArea.get_overlapping_bodies():
-		pass
+		if body is Organism:
+			var dir = (body.global_position - global_position)
+			#var attenuation = (1 - dir.length() / $KnockbackArea/CollisionShape2D.shape.radius)
+			body.on_knockback(KNOCKBACK_STRENGTH * dir.normalized())
 
 func _on_dash_damage_area_area_entered(area: Area2D) -> void:
 	if area is Hitbox:
@@ -128,3 +131,4 @@ func _on_player_health_changed(health: int) -> void:
 	if (0.25 * $Body.texture.get_width() * scale.y) * camera.zoom.y >= (0.6 * get_viewport_rect().size.y):
 		var tween = get_tree().create_tween()
 		tween.tween_property(camera, "zoom", 0.2 * camera.zoom, 4.)
+

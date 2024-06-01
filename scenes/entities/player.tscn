@@ -13,7 +13,7 @@ radius = 49.0408
 radius = 48.3735
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xprc"]
-radius = 243.101
+radius = 506.077
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_61xsj"]
 radius = 47.0425
@@ -57,11 +57,14 @@ wait_time = 0.25
 one_shot = true
 
 [node name="KnockbackArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackArea"]
 shape = SubResource("CircleShape2D_8xprc")
 
 [node name="DashDamageArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
