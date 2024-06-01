@@ -37,6 +37,7 @@ var can_knockback: bool = true
 
 # Other
 @onready var camera := $Camera2D
+@export var knockback_particles_scene: PackedScene
 
 # Player Stats
 var cactus_points: int = 0
@@ -87,7 +88,13 @@ func _input(_event: InputEvent) -> void:
 		attack_timer.start()
 		
 	if Input.is_action_just_pressed("knockback") and can_knockback:
-		$KnockbackParticles.emitting = true
+		# add knockback particles onto global world
+		var knockback_particles = knockback_particles_scene.instantiate()
+		add_sibling(knockback_particles)
+		knockback_particles.global_position = global_position
+		knockback_particles.scale = scale
+		knockback_particles.emitting = true
+
 		can_knockback = false
 		_apply_knockback()
 		knockback_timer.start()

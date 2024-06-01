@@ -45,6 +45,7 @@ hue_variation_max = 0.06
 hue_variation_curve = SubResource("CurveTexture_arqi5")
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
+modulate = Color(0, 1, 0.145098, 1)
 emitting = false
 amount = 7848
 amount_ratio = 0.15
@@ -53,3 +54,5 @@ texture = ExtResource("2_0atbq")
 lifetime = 0.5
 one_shot = true
 script = ExtResource("1_v7l1y")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
