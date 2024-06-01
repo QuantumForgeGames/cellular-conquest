@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://ci62pxjwca512"]
+
+[ext_resource type="Script" path="res://scripts/entities/knockback_guy/knockback_guy.gd" id="1_17ehe"]
+[ext_resource type="Texture2D" uid="uid://x3llf3sv1mb0" path="res://assets/art/entities/knockback_guy/Long_Body.png" id="2_crgm1"]
+[ext_resource type="Texture2D" uid="uid://6urajm6mh5xv" path="res://assets/art/entities/knockback_guy/Long_Upset.png" id="3_5q54p"]
+[ext_resource type="Texture2D" uid="uid://bnj5d0icd1yn6" path="res://assets/art/entities/knockback_guy/Long_Neutral.png" id="4_s2cwe"]
+[ext_resource type="PackedScene" uid="uid://cy6iv24ne4unh" path="res://scenes/entities/hitbox.tscn" id="5_5wo1a"]
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="6_4d0nd"]
+[ext_resource type="Script" path="res://scripts/entities/knockback_guy/idle_state.gd" id="7_vblqy"]
+[ext_resource type="Script" path="res://scripts/entities/knockback_guy/rage_state.gd" id="8_eor58"]
+[ext_resource type="PackedScene" uid="uid://uxxmehrney0d" path="res://scenes/entities/knockback.tscn" id="9_7co6g"]
+[ext_resource type="Script" path="res://scripts/entities/cactus_cube/knockback_state.gd" id="10_1wj7b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0alw6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rntv5"]
+radius = 17.0
+height = 102.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjv60"]
+radius = 63.0714
+
+[node name="KnockbackDude" type="CharacterBody2D" node_paths=PackedStringArray("knockback_cooldown_timer", "detection_area", "knockback_effect", "angry_face", "neutral_face")]
+script = ExtResource("1_17ehe")
+knockback_cooldown_timer = NodePath("KnockbackCooldownTimer")
+detection_area = NodePath("DetectionArea")
+knockback_effect = NodePath("")
+angry_face = NodePath("Body/AngryFace")
+neutral_face = NodePath("Body/NeutralFace")
+CHASE_SPEED = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0alw6")
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_crgm1")
+
+[node name="AngryFace" type="Sprite2D" parent="Body"]
+visible = false
+texture = ExtResource("3_5q54p")
+
+[node name="NeutralFace" type="Sprite2D" parent="Body"]
+texture = ExtResource("4_s2cwe")
+
+[node name="Hitbox" parent="." instance=ExtResource("5_5wo1a")]
+collision_layer = 3
+BASE_SIZE = 0.25
+SIZE_SCALE_FACTOR = 0.2
+SIZE_TWEEN_RATE = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rntv5")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("6_4d0nd")
+current_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity")]
+script = ExtResource("7_vblqy")
+entity = NodePath("../..")
+
+[node name="Rage" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity")]
+script = ExtResource("8_eor58")
+entity = NodePath("../..")
+knockback_particles_scene = ExtResource("9_7co6g")
+
+[node name="Knockback" type="Node" parent="StateMachine" node_paths=PackedStringArray("entity")]
+script = ExtResource("10_1wj7b")
+entity = NodePath("../..")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_vjv60")
+
+[node name="KnockbackCooldownTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="body_entered" from="DetectionArea" to="StateMachine" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="StateMachine" method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="KnockbackCooldownTimer" to="StateMachine/Rage" method="_on_knockback_cooldown_timer_timeout"]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://bl8c4j7kn4mb"]
+
+[ext_resource type="Script" path="res://scripts/custom/enemy_data.gd" id="1_e1xst"]
+[ext_resource type="PackedScene" uid="uid://ci62pxjwca512" path="res://scenes/entities/knockback_guy.tscn" id="1_gsyta"]
+
+[resource]
+script = ExtResource("1_e1xst")
+max_count = 10
+scene = ExtResource("1_gsyta")
