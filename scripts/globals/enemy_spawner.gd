@@ -50,6 +50,7 @@ func _find_enemy_spawn_location () -> Vector2:
 func _spawn_enemy (enemy_data :EnemyData, index :int) -> void:
 	var enemy = enemy_data.scene.instantiate()
 	enemy.global_position = _find_enemy_spawn_location()
+	enemy.initial_health = randi_range(8, 15) / EnemySpawner.global_scale_factor
 	enemy.died.connect(_on_enemy_died.bind(index))
 	_enemies[index].instances.append(enemy)
 	SpawnRoot.add_child.call_deferred(enemy)

@@ -190,7 +190,6 @@ func _on_player_health_changed(health: int) -> void:
 		EnemySpawner.global_scale_factor *= scale_factor
 		global_scale_factor *= scale_factor
 		EnemySpawner.scale_enemies(scale_factor, duration, global_position)
-		
 
 func upgrade_abilities():
 	# logic goes here for changing ability strengths based on stats
