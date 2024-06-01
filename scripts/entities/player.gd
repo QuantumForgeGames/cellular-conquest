@@ -176,9 +176,11 @@ func _on_dash_damage_area_area_entered(area: Area2D) -> void:
 			area.on_damage_recieved(DASH_DAMAGE)
 
 func _on_player_health_changed(health: int) -> void:
-	if (0.25 * $Body.texture.get_width() * scale.y) * camera.zoom.y >= (0.6 * get_viewport_rect().size.y):
-		var tween = get_tree().create_tween()
-		tween.tween_property(camera, "zoom", 0.2 * camera.zoom, 4.)
+	var dir = signi(5-health)
+	match dir:
+		0: EnemySpawner.reset_enenmy_scale()
+		1: EnemySpawner.scale_enemies_up()
+		-1: EnemySpawner.scale_enemies_down()
 
 func upgrade_abilities():
 	# logic goes here for changing ability strengths based on stats
