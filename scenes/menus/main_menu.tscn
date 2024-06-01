@@ -1,6 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbcgyhfuawphf"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_g6o13"]
+[ext_resource type="Texture2D" uid="uid://c21dyxg07spju" path="res://assets/art/backgrounds/Title Page_BG.png" id="2_10iuo"]
+[ext_resource type="Texture2D" uid="uid://cx7vdtb4f14ax" path="res://assets/art/buttons/Title Page_Play.png" id="3_055iv"]
+[ext_resource type="Texture2D" uid="uid://c5l0hmlgfok5p" path="res://assets/art/buttons/Title Page_Play_Hover.png" id="4_erjvi"]
+[ext_resource type="Texture2D" uid="uid://dg01nv3eyfwef" path="res://assets/art/buttons/Title Page_Settings.png" id="5_h55sr"]
+[ext_resource type="Texture2D" uid="uid://cagjg1lj8ogry" path="res://assets/art/buttons/Title Page_Settings_Hover.png" id="6_wqgbh"]
 [ext_resource type="Texture2D" uid="uid://dj6il25m7lmy2" path="res://assets/art/backgrounds/Title Page_BG.png" id="2_10iuo"]
 [ext_resource type="Texture2D" uid="uid://bc4hhh3mffit2" path="res://assets/art/buttons/Title Page_Play.png" id="3_055iv"]
 [ext_resource type="Texture2D" uid="uid://1raufynvb0nl" path="res://assets/art/buttons/Title Page_Play_Hover.png" id="4_erjvi"]
@@ -58,5 +63,32 @@ grow_vertical = 2
 texture_normal = ExtResource("5_h55sr")
 texture_hover = ExtResource("6_wqgbh")
 
+[node name="AkBank" type="AkBank" parent="."]
+bank = {
+"id": 1355168291,
+"name": "Init"
+}
+load_on = 1
+
+[node name="AkBank" type="AkBank" parent="AkBank"]
+bank = {
+"id": 3161908922,
+"name": "Main"
+}
+load_on = 1
+
+[node name="AkEvent2D" type="AkEvent2D" parent="."]
+event = {
+"id": 1068589722,
+"name": "Play_Ambience_V1"
+}
+trigger_on = 2
+
+[node name="AkListener2D" type="AkListener2D" parent="."]
+
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_hover"]
+[connection signal="mouse_exited" from="PlayButton" to="." method="_on_exit_hover"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="SettingsButton" to="." method="_on_hover"]
+[connection signal="mouse_exited" from="SettingsButton" to="." method="_on_exit_hover"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

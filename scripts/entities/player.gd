@@ -40,6 +40,11 @@ var is_knockback :bool = false
 # Other
 @onready var camera := $Camera2D
 @export var knockback_particles_scene: PackedScene
+@export var MAX_RESCALE_COUNT: int = 1
+var is_zooming := false
+var global_scale_factor: float = 1.0
+var rescale_count: int = 0
+
 
 # Player Stats
 var cactus_points: int = 0
@@ -55,6 +60,7 @@ var TOOTH_POINT_THRESHOLD: int = 5
 var BAR_POINT_THRESHOLD: int = 5
 
 func _ready() -> void:
+	Wwise.register_game_obj(self, self.name)
 	z_index = 1
 	EnemySpawner.player = self
 	$Hitbox.health = initial_health
@@ -72,15 +78,22 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _input(_event: InputEvent) -> void:
-	if not is_dashing and can_dash and Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash"):
+		if is_dashing or not can_dash:
+			Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERABILITYUNAVAILABLE_V2, self)
+			return
 		toggle_dash()
 		can_dash = false
 		var dir = (get_global_mouse_position() - global_position)
 		dash_direction = (dir.normalized()) if (dir.length() > DASH_DEADZONE) else Vector2.ZERO
 		get_tree().create_timer(DASH_DURATION).timeout.connect(toggle_dash)
 		dash_timer.start()
+		Wwise.post_event_id(AK.EVENTS.PLAY_PLAYER_LOCOMOTION_BOOSTS, self)
 	
-	if Input.is_action_pressed("shoot") and can_attack:
+	if Input.is_action_just_pressed("shoot"):
+		if not can_attack:
+			Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERABILITYUNAVAILABLE_V2, self)
+			return
 		can_attack = false
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
@@ -90,8 +103,12 @@ func _input(_event: InputEvent) -> void:
 		projectile.damage = PROJECTILE_DAMAGE
 		add_sibling(projectile)
 		attack_timer.start()
+		Wwise.post_event_id(AK.EVENTS.PLAY_PLAYER_ATTACK, self)
 		
-	if Input.is_action_just_pressed("knockback") and can_knockback:
+	if Input.is_action_just_pressed("knockback"):
+		if not can_knockback:
+			Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERABILITYUNAVAILABLE_V2, self)
+			return
 		# add knockback particles onto global world
 		var knockback_particles = knockback_particles_scene.instantiate()
 		add_sibling(knockback_particles)
@@ -101,6 +118,7 @@ func _input(_event: InputEvent) -> void:
 
 		can_knockback = false
 		_apply_knockback()
+		Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERSHOCKWAVE_V1, self)
 		knockback_timer.start()
 
 		toggle_face()
@@ -120,6 +138,7 @@ func on_absorbed() -> void:
 	$Hitbox.queue_free()
 	EventManager.player_health_changed.emit(0)
 	EventManager.game_over.emit()
+	Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERDEATH_V1, self)
 	
 	z_index = 0
 	set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
@@ -147,6 +166,7 @@ func _on_knockback_cooldown_timer_timeout() -> void:
 
 func _on_hitbox_damage_recieved(_value: float) -> void:
 	EventManager.player_health_changed.emit($Hitbox.health)
+	Wwise.post_event_id(AK.EVENTS.PLAY_PLAYER_DAMAGE, self)
 	if $Hitbox.health <= 0:
 		on_absorbed()
 
@@ -172,13 +192,33 @@ func _on_dash_damage_area_area_entered(area: Area2D) -> void:
 			area.entity.on_absorbed()
 			on_win(area.entity)
 			EventManager.player_health_changed.emit($Hitbox.health)
+			Wwise.post_event_id(AK.EVENTS.PLAY_PLAYER_ABSORB, self)
 		else:
 			area.on_damage_recieved(DASH_DAMAGE)
 
 func _on_player_health_changed(health: int) -> void:
-	if (0.25 * $Body.texture.get_width() * scale.y) * camera.zoom.y >= (0.6 * get_viewport_rect().size.y):
-		var tween = get_tree().create_tween()
-		tween.tween_property(camera, "zoom", 0.2 * camera.zoom, 4.)
+	if (0.25 * $Body.texture.get_width() * scale.y) * camera.zoom.y >= (0.6 * get_viewport_rect().size.y) and not is_zooming:
+		rescale_count += 1
+		if rescale_count < MAX_RESCALE_COUNT:
+			is_zooming = true
+			var scale_factor = 0.2
+			var duration = 4.
+			
+			if $Hitbox.size_tween: $Hitbox.size_tween.kill()
+			$Hitbox.size_tween = get_tree().create_tween()
+			$Hitbox.size_tween.tween_property(self, "scale", scale_factor * scale, duration)
+			$Hitbox.size_tween.tween_callback(func (): is_zooming = false)
+			GameHandler.global_scale_factor *= scale_factor
+			global_scale_factor *= scale_factor
+			EnemySpawner.scale_enemies(scale_factor, duration, global_position)
+		else: 
+			if is_instance_valid(EnemySpawner):
+				EnemySpawner.destroy()
+				process_mode = Node.PROCESS_MODE_DISABLED
+				var tween = get_tree().create_tween()
+				var target_scale = 4 * get_viewport_rect().size.y * 6.0 / $Body.texture.get_width()
+				tween.tween_property(self, "scale", Vector2(target_scale, target_scale), 5.)
+				tween.tween_callback(func(): SceneTransition.change_scene("res://scenes/menus/game_win.tscn"))
 
 func upgrade_abilities():
 	# logic goes here for changing ability strengths based on stats

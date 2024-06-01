@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
+	<RootPaths>
+		<ProjectRoot>../../../../../Downloads/To Install/GodotGameJam01</ProjectRoot>
+		<SourceFilesRoot>../../../../../Downloads/To Install/GodotGameJam01/.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>../../../../../Downloads/To Install/GodotGameJam01/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{2A6A0E4B-C8BA-A99F-DF70-5BE243C5CE59}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="822163944" Name="SS_Air_RPM"/>
+				<GameParameter Id="1029930033" Name="SS_Air_Fury"/>
+				<GameParameter Id="1351367891" Name="SS_Air_Fear"/>
+				<GameParameter Id="2648548617" Name="SS_Air_Month"/>
+				<GameParameter Id="3002758120" Name="SS_Air_Freefall"/>
+				<GameParameter Id="3074696722" Name="SS_Air_Size"/>
+				<GameParameter Id="3203397129" Name="SS_Air_TimeOfDay"/>
+				<GameParameter Id="3715662592" Name="SS_Air_Storm"/>
+				<GameParameter Id="3847924954" Name="SS_Air_Presence"/>
+				<GameParameter Id="4160247818" Name="SS_Air_Turbulence"/>
+			</GameParameters>
+			<AcousticTextures>
+				<AcousticTexture Id="504532776" Name="Brick">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="18"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="23"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="513139656" Name="Mountain">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="841620460" Name="Concrete">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="6"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="14"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1755085759" Name="Wood_Deep">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="1"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="8"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1873957695" Name="Anechoic">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="1970351858" Name="Fabric">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="3"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="13"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="48"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="72"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2058049674" Name="Wood">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="20"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="35"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2412606308" Name="Carpet">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="46"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="45"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="76"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2637588553" Name="Tile">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="67"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="41"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="12"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="0"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="2928161104" Name="Curtains">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="7"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="60"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="0"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="84"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3195498748" Name="Cork_Tiles">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="14"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="30"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="73"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="3670307564" Name="Drywall">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="2"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="2"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4168643977" Name="Acoustic_Banner">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="37"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="100"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="100"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+				<AcousticTexture Id="4262522749" Name="Wood_Bright">
+					<Properties>
+						<Property Name="AbsorptionLow" Type="Real32" Value="32"/>
+						<Property Name="AbsorptionMidLow" Type="Real32" Value="25"/>
+						<Property Name="AbsorptionMidHigh" Type="Real32" Value="10"/>
+						<Property Name="AbsorptionHigh" Type="Real32" Value="9"/>
+						<Property Name="Scattering" Type="Real32" Value="0"/>
+					</Properties>
+				</AcousticTexture>
+			</AcousticTextures>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{6FF924F3-754D-A0CB-AFAB-BC3CB42DF4E3}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="27535084" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Settings_V1.wav</ShortName>
+					<CachePath>SFX/Settings_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="36505752" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerDeath_V1.wav</ShortName>
+					<CachePath>SFX/PlayerDeath_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="39529689" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAttack1_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAttack1_V2_7CB19B7D.wem</CachePath>
+				</File>
+				<File Id="93922265" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAbsorb3_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAbsorb3_V2_D98D18BE.wem</CachePath>
+				</File>
+				<File Id="144764208" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerBoost2_V2.wav</ShortName>
+					<CachePath>SFX/PlayerBoost2_V2_F562B977.wem</CachePath>
+				</File>
+				<File Id="171751750" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAttack2_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAttack2_V2_8A0E9BA6.wem</CachePath>
+				</File>
+				<File Id="197262200" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BoosterGuyBoost2_V1.wav</ShortName>
+					<CachePath>SFX/BoosterGuyBoost2_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="254012937" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerBoost3_V2.wav</ShortName>
+					<CachePath>SFX/PlayerBoost3_V2_3D1010E7.wem</CachePath>
+				</File>
+				<File Id="319122083" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Play_V1.wav</ShortName>
+					<CachePath>SFX/Play_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="324221713" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerDamage3_V2.wav</ShortName>
+					<CachePath>SFX/PlayerDamage3_V2_EBC56F04.wem</CachePath>
+				</File>
+				<File Id="329615433" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BoosterGuyBoost1_V1.wav</ShortName>
+					<CachePath>SFX/BoosterGuyBoost1_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="348509384" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CactusCubeAttack2_V2.wav</ShortName>
+					<CachePath>SFX/CactusCubeAttack2_V2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="411790071" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAbsorb1_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAbsorb1_V2_001E1D83.wem</CachePath>
+				</File>
+				<File Id="413541021" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Pause_V1.wav</ShortName>
+					<CachePath>SFX/Pause_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="501606844" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAbilityUnavailable_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAbilityUnavailable_V2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="565495120" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerDamage_V2.wav</ShortName>
+					<CachePath>SFX/PlayerDamage_V2_BEF08E3C.wem</CachePath>
+				</File>
+				<File Id="622472134" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Environment2D_V2.wav</ShortName>
+					<CachePath>SFX/Environment2D_V2_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="652109984" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CactusCubeAttack3_V2.wav</ShortName>
+					<CachePath>SFX/CactusCubeAttack3_V2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="679332192" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BurnerOn_V1.wav</ShortName>
+					<CachePath>SFX/BurnerOn_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="718478016" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BurnerLoop_V1.wav</ShortName>
+					<CachePath>SFX/BurnerLoop_V1_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="739529342" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAbsorb2_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAbsorb2_V2_DD200D27.wem</CachePath>
+				</File>
+				<File Id="739741689" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BoosterGuyVox1_V1.wav</ShortName>
+					<CachePath>SFX/BoosterGuyVox1_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="743139677" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerBoost1_V2.wav</ShortName>
+					<CachePath>SFX/PlayerBoost1_V2_89533A0F.wem</CachePath>
+				</File>
+				<File Id="746547299" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAttack3_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAttack3_V2_CAE5DB73.wem</CachePath>
+				</File>
+				<File Id="768296320" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerAttack4_V2.wav</ShortName>
+					<CachePath>SFX/PlayerAttack4_V2_C90C9A41.wem</CachePath>
+				</File>
+				<File Id="872705193" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CactusCubeVox2_V1.wav</ShortName>
+					<CachePath>SFX/CactusCubeVox2_V1_9AC7385C.wem</CachePath>
+				</File>
+				<File Id="880923014" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CactusCubeDamage3_V1.wav</ShortName>
+					<CachePath>SFX/CactusCubeDamage3_V1_EEAFB7B7.wem</CachePath>
+				</File>
+				<File Id="888821648" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BoosterGuyVox3_V1.wav</ShortName>
+					<CachePath>SFX/BoosterGuyVox3_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="894561600" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CactusCubeAttack1_V2.wav</ShortName>
+					<CachePath>SFX/CactusCubeAttack1_V2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="952790639" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BoosterGuyBoost3_V1.wav</ShortName>
+					<CachePath>SFX/BoosterGuyBoost3_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="977489576" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Ambience_V1.wav</ShortName>
+					<CachePath>SFX/Ambience_V1_EB08E61C.wem</CachePath>
+				</File>
+				<File Id="978317848" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerShockwave_V1.wav</ShortName>
+					<CachePath>SFX/PlayerShockwave_V1_904966D4.wem</CachePath>
+				</File>
+				<File Id="994815928" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Hover_V1.wav</ShortName>
+					<CachePath>SFX/Hover_V1_980C49F3.wem</CachePath>
+				</File>
+				<File Id="1031069105" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CactusCubeDamage2_V1.wav</ShortName>
+					<CachePath>SFX/CactusCubeDamage2_V1_E90F8A87.wem</CachePath>
+				</File>
+				<File Id="1039611449" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CactusCubeDamage1_V1.wav</ShortName>
+					<CachePath>SFX/CactusCubeDamage1_V1_F4E467BE.wem</CachePath>
+				</File>
+				<File Id="1049040506" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CactusCubeAttack4_V2.wav</ShortName>
+					<CachePath>SFX/CactusCubeAttack4_V2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1056220285" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>BoosterGuyVox2_V1.wav</ShortName>
+					<CachePath>SFX/BoosterGuyVox2_V1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="1073396580" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>PlayerDamage2_V2.wav</ShortName>
+					<CachePath>SFX/PlayerDamage2_V2_B27DDBD2.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="1866712635" Name="High_Freq_Cut_1" LibName="Wwise Parametric EQ" LibId="6881283"/>
+					<Plugin Id="3013737261" Name="Bass_Remover_3" LibName="Wwise Parametric EQ" LibId="6881283"/>
+					<Plugin Id="3013737263" Name="Bass_Remover_1" LibName="Wwise Parametric EQ" LibId="6881283"/>
+				</ShareSets>
+			</Plugins>
+			<Events>
+				<Event Id="1068589722" Name="Play_Ambience_V1">
+					<MediaRefs>
+						<MediaRef Id="977489576"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="630048419" Name="Play_BoosterGuy_Boost">
+					<MediaRefs>
+						<MediaRef Id="197262200"/>
+						<MediaRef Id="329615433"/>
+						<MediaRef Id="952790639"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2574480589" Name="Play_BoosterGuy_Damage">
+					<MediaRefs>
+						<MediaRef Id="880923014"/>
+						<MediaRef Id="1031069105"/>
+						<MediaRef Id="1039611449"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1866712635"/>
+							<PluginRef Id="3013737261"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="1790324233" Name="Play_BoosterGuy_Vox">
+					<MediaRefs>
+						<MediaRef Id="197262200"/>
+						<MediaRef Id="329615433"/>
+						<MediaRef Id="739741689"/>
+						<MediaRef Id="888821648"/>
+						<MediaRef Id="952790639"/>
+						<MediaRef Id="1056220285"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1540338042" Name="Play_BurnerLoop_V1">
+					<MediaRefs>
+						<MediaRef Id="718478016"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="847665841" Name="Play_BurnerOn_V1">
+					<MediaRefs>
+						<MediaRef Id="679332192"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2670409596" Name="Play_Cactus_Cube_Attack">
+					<MediaRefs>
+						<MediaRef Id="348509384"/>
+						<MediaRef Id="652109984"/>
+						<MediaRef Id="894561600"/>
+						<MediaRef Id="1049040506"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1188986259" Name="Play_Cactus_Cube_Damage">
+					<MediaRefs>
+						<MediaRef Id="880923014"/>
+						<MediaRef Id="1031069105"/>
+						<MediaRef Id="1039611449"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1866712635"/>
+							<PluginRef Id="3013737261"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="231297431" Name="Play_Cactus_Cube_Vox">
+					<MediaRefs>
+						<MediaRef Id="872705193"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3013737263"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="1597649194" Name="Play_Environment2D_V2">
+					<MediaRefs>
+						<MediaRef Id="622472134"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2172948728" Name="Play_Hover_V1">
+					<MediaRefs>
+						<MediaRef Id="994815928"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="4147221584" Name="Play_Pause_V1">
+					<MediaRefs>
+						<MediaRef Id="413541021"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3746962728" Name="Play_Play_V1">
+					<MediaRefs>
+						<MediaRef Id="319122083"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="592870319" Name="Play_Player_Absorb">
+					<MediaRefs>
+						<MediaRef Id="93922265"/>
+						<MediaRef Id="411790071"/>
+						<MediaRef Id="739529342"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3238800884" Name="Play_Player_Attack">
+					<MediaRefs>
+						<MediaRef Id="39529689"/>
+						<MediaRef Id="171751750"/>
+						<MediaRef Id="746547299"/>
+						<MediaRef Id="768296320"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3638125099" Name="Play_Player_Damage">
+					<MediaRefs>
+						<MediaRef Id="324221713"/>
+						<MediaRef Id="565495120"/>
+						<MediaRef Id="1073396580"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="21570674" Name="Play_Player_Locomotion_Boosts">
+					<MediaRefs>
+						<MediaRef Id="144764208"/>
+						<MediaRef Id="254012937"/>
+						<MediaRef Id="743139677"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="624721480" Name="Play_PlayerAbilityUnavailable_V2">
+					<MediaRefs>
+						<MediaRef Id="501606844"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3713826775" Name="Play_PlayerDeath_V1">
+					<MediaRefs>
+						<MediaRef Id="36505752"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="312702222" Name="Play_PlayerShockwave_V1">
+					<MediaRefs>
+						<MediaRef Id="978317848"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1080380695" Name="Play_Settings_V1">
+					<MediaRefs>
+						<MediaRef Id="27535084"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+<<<<<<< HEAD
+	<FileHash>{DC7924F6-E33A-5846-10ED-26F968F4A92B}</FileHash>
+=======
+	<FileHash>{64196A10-13EB-ADCA-5FE6-BDE4884C1B38}</FileHash>
+>>>>>>> 482ac2d (audio connections slowly being put into place)
+</SoundBanksInfo>

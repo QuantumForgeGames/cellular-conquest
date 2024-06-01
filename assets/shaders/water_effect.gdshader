@@ -39,7 +39,7 @@ void fragment() {
     
     
 	//float worley = worley(UV + TIME * 0.08f, 3.0, 5.0);
-    float scale = 0.0025f;
+    float scale = 0.0005f;
     float worley = worley(world_position * scale, 3.0, 5.0);
     //float worley = worley(UV, 3.0, 5.0);
     vec4 water_color = texture(color_ramp, vec2(worley));

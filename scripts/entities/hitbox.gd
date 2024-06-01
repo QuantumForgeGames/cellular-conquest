@@ -17,15 +17,16 @@ var health: int = BASE_HEALTH :
 var size_tween: Tween = null
 
 func update_size(old_health: int, current_health: int):
-	var target_scale := (SIZE_SCALE_FACTOR * (current_health - BASE_HEALTH) + BASE_SIZE) * Vector2.ONE
-	if size_tween: size_tween.kill()
-	size_tween = get_tree().create_tween()
-	size_tween.tween_property(entity, "scale", target_scale, SIZE_TWEEN_RATE * abs(current_health - old_health))
+	if not entity.is_zooming:
+		var target_scale: Vector2 = (GameHandler.global_scale_factor * SIZE_SCALE_FACTOR * (current_health - BASE_HEALTH) + BASE_SIZE) * Vector2.ONE
+		if size_tween: size_tween.kill()
+		size_tween = get_tree().create_tween()
+		size_tween.tween_property(entity, "scale", target_scale, SIZE_TWEEN_RATE * abs(current_health - old_health))
 
 func on_damage_recieved(val: int):
 	health -= val
 	damage_recieved.emit(val)
-	
+
 func _on_area_entered(area: Area2D) -> void:
 	if entity is Player and area is Hitbox:
 		var winner = self if (entity.scale.x > area.entity.scale.x) else area
