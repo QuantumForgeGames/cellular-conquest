@@ -40,6 +40,7 @@ event = {
 "name": "Play_Environment2D_V2"
 }
 trigger_on = 2
+stop_on = 3
 
 [node name="AkEvent2D2" type="AkEvent2D" parent="."]
 event = {
@@ -47,3 +48,4 @@ event = {
 "name": "Play_Music_V2"
 }
 trigger_on = 2
+stop_on = 3
