@@ -12,7 +12,7 @@ class_name Player
 @export var DASH_SPEED := 1200.
 @export var DASH_DURATION := 0.4
 @export var DASH_DEADZONE := 10 # in pixels
-@export var DASH_DAMAGE := 1
+@export var DASH_DAMAGE := 0
 
 var dash_direction := Vector2.ZERO
 var is_dashing: bool = false
@@ -34,11 +34,15 @@ var can_attack: bool = true
 
 var can_knockback: bool = true
 
+# other
+@onready var camera := $Camera2D
+
 func _ready() -> void:
 	z_index = 1
 	EnemySpawner.player = self
 	$Hitbox.health = initial_health
 	EventManager.player_health_changed.emit($Hitbox.health)
+	EventManager.player_health_changed.connect(_on_player_health_changed)
 	
 func _physics_process(_delta: float) -> void:
 	if is_dashing:
@@ -84,10 +88,14 @@ func on_absorbed() -> void:
 	EventManager.player_health_changed.emit(0)
 	EventManager.game_over.emit()
 	
+	z_index = 0
 	process_mode = Node.PROCESS_MODE_DISABLED
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(0, 0), 1.)
 	tween.tween_callback(queue_free)
+
+func on_win() -> void:
+	EventManager.player_health_changed.emit($Hitbox.health)
 
 func _on_dash_cooldown_timer_timeout():
 	can_dash = true
@@ -115,3 +123,8 @@ func _on_dash_damage_area_area_entered(area: Area2D) -> void:
 			EventManager.player_health_changed.emit($Hitbox.health)
 		else:
 			area.on_damage_recieved(DASH_DAMAGE)
+
+func _on_player_health_changed(health: int) -> void:
+	if (0.25 * $Body.texture.get_width() * scale.y) * camera.zoom.y >= (0.6 * get_viewport_rect().size.y):
+		var tween = get_tree().create_tween()
+		tween.tween_property(camera, "zoom", 0.2 * camera.zoom, 4.)

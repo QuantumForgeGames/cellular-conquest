@@ -31,4 +31,5 @@ func _on_area_entered(area: Area2D) -> void:
 		var winner = self if (entity.scale.x > area.entity.scale.x) else area
 		var loser = self if (entity.scale.x <= area.entity.scale.x) else area
 		winner.health += loser.health
+		winner.entity.on_win()
 		loser.entity.on_absorbed()
