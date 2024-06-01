@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cellular Conquest"
-run/main_scene="res://scenes/levels/world.tscn"
+run/main_scene="res://scenes/menus/blank.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/art/entities/player/icon.svg"
 
@@ -33,6 +33,10 @@ mouse_cursor/custom_image="res://assets/art/ui/GameCursor.png"
 [dotnet]
 
 project/assembly_name="Cellular Conquest"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Wwise/plugin.cfg")
 
 [input]
 
