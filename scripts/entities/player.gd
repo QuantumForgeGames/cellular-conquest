@@ -77,12 +77,18 @@ func _input(_event: InputEvent) -> void:
 		_apply_knockback()
 		knockback_timer.start()
 
+		toggle_face()
+		get_tree().create_timer(0.5).timeout.connect(toggle_face)
+
 func toggle_dash() -> void:
 	is_dashing = not is_dashing
+	toggle_face()
+	$Hitbox/CollisionShape2D.set_deferred("disabled", not $Hitbox/CollisionShape2D.disabled)
+
+func toggle_face() -> void:
 	$Body/NeutralFace.visible = not $Body/NeutralFace.visible
 	$Body/AngryFace.visible = not $Body/AngryFace.visible
-	$Hitbox/CollisionShape2D.set_deferred("disabled", not $Hitbox/CollisionShape2D.disabled)
-	
+
 func on_absorbed() -> void:
 	$Camera2D.reparent(get_parent())
 	$Hitbox.queue_free()
