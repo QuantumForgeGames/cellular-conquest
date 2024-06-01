@@ -196,6 +196,7 @@ func upgrade_abilities():
 		DASH_DAMAGE += 1 # upgrade dash damage
 		EventManager.skill_level_changed.emit("Dash", dash_level)
 		
+
 	var new_knockback_level = (bar_points / BAR_POINT_THRESHOLD)
 
 	if knockback_level < new_knockback_level:
