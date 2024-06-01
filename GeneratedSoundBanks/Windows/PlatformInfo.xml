@@ -2,11 +2,11 @@
 <PlatformInfo>
 	<Platform Name="Windows" BasePlatform="Windows" Generator="2023.1.3.8471"/>
 	<RootPaths>
-		<ProjectRoot>../../../../../Downloads/To Install/GodotGameJam01</ProjectRoot>
-		<SourceFilesRoot>../../../../../Downloads/To Install/GodotGameJam01/.cache/Windows</SourceFilesRoot>
+		<ProjectRoot>../../../../../Downloads/To Install/GodotGameJam01 (1)</ProjectRoot>
+		<SourceFilesRoot>../../../../../Downloads/To Install/GodotGameJam01 (1)/.cache/Windows</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>../../../../../Downloads/To Install/GodotGameJam01/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../../../Downloads/To Install/GodotGameJam01 (1)/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DefaultAlign>16</DefaultAlign>
 	<Settings>
@@ -28,5 +28,5 @@
 		<PrintObjectGuid>false</PrintObjectGuid>
 		<PrintObjectPath>false</PrintObjectPath>
 	</Settings>
-	<FileHash>{1FE5317D-EACC-A611-4534-305D7D188312}</FileHash>
+	<FileHash>{4C64AFF4-3AB6-5758-A1CB-26E4FC9F5F5D}</FileHash>
 </PlatformInfo>
