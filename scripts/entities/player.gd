@@ -90,10 +90,7 @@ func _input(_event: InputEvent) -> void:
 		dash_timer.start()
 		Wwise.post_event_id(AK.EVENTS.PLAY_PLAYER_LOCOMOTION_BOOSTS, self)
 	
-	if Input.is_action_just_pressed("shoot"):
-		if not can_attack:
-			Wwise.post_event_id(AK.EVENTS.PLAY_PLAYERABILITYUNAVAILABLE_V2, self)
-			return
+	if Input.is_action_pressed("shoot") and can_attack:
 		can_attack = false
 		var projectile = projectile_scene.instantiate()
 		projectile.global_position = global_position
