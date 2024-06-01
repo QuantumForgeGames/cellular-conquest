@@ -5,6 +5,7 @@ signal died(enemy: Organism)
 
 @export var initial_health: int = 10
 var knockback := Vector2.ZERO
+var is_zooming: bool = false
 
 func _ready() -> void:
 	$Hitbox.health = initial_health
@@ -22,3 +23,11 @@ func on_win(loser: CharacterBody2D) -> void:
 func on_knockback(velocity: Vector2):
 	knockback = velocity
 	$StateMachine.on_child_transitioned("Knockback")
+
+func zoom(scale_factor: float, duration: float, pos: Vector2):
+	if get_tree():
+		is_zooming = true
+		if $Hitbox.size_tween: $Hitbox.size_tween.kill()
+		$Hitbox.size_tween = get_tree().create_tween()
+		$Hitbox.size_tween.tween_property(self, "scale", scale_factor * scale, duration)
+		$Hitbox.size_tween.tween_callback(func (): is_zooming = false)

@@ -40,6 +40,7 @@ var is_knockback :bool = false
 # Other
 @onready var camera := $Camera2D
 @export var knockback_particles_scene: PackedScene
+var is_zooming := false
 
 # Player Stats
 var cactus_points: int = 0
@@ -176,9 +177,18 @@ func _on_dash_damage_area_area_entered(area: Area2D) -> void:
 			area.on_damage_recieved(DASH_DAMAGE)
 
 func _on_player_health_changed(health: int) -> void:
-	if (0.25 * $Body.texture.get_width() * scale.y) * camera.zoom.y >= (0.6 * get_viewport_rect().size.y):
-		var tween = get_tree().create_tween()
-		tween.tween_property(camera, "zoom", 0.2 * camera.zoom, 4.)
+	if (0.25 * $Body.texture.get_width() * scale.y) * camera.zoom.y >= (0.6 * get_viewport_rect().size.y) and not is_zooming:
+		is_zooming = true
+		var scale_factor = 0.2
+		var duration = 4.
+		
+		if $Hitbox.size_tween: $Hitbox.size_tween.kill()
+		$Hitbox.size_tween = get_tree().create_tween()
+		$Hitbox.size_tween.tween_property(self, "scale", scale_factor * scale, duration)
+		$Hitbox.size_tween.tween_callback(func (): is_zooming = false)
+		EnemySpawner.global_scale_factor *= scale_factor
+		EnemySpawner.scale_enemies(scale_factor, duration, global_position)
+		
 
 func upgrade_abilities():
 	# logic goes here for changing ability strengths based on stats
