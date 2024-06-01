@@ -20,7 +20,7 @@ func _on_settings_button_pressed():
 
 func _on_hover () -> void:
 	Wwise.post_event_id(AK.EVENTS.PLAY_BURNERON_V1, self)
-	burner_id = Wwise.post_event_id(AK.EVENTS.PLAY_BURNERLOOP_V1, self)
+	burner_id = Wwise.post_event_id(AK.EVENTS.PLAY_BURNERLOOP_V2, self)
 
 
 func _on_exit_hover () -> void:
