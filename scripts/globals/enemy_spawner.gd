@@ -21,7 +21,7 @@ var player = null
 func _ready () -> void:
 	randomize()
 	await spawn_root_attached
-
+	_initialize_enemies()
 	var i = 0
 	for data in _enemy_data:
 		_enemies[i] = {
@@ -33,6 +33,18 @@ func _ready () -> void:
 	
 	var tween = get_tree().create_tween().set_loops()
 	tween.tween_callback(_respawn_far_enemies).set_delay(2.0)
+	
+# Re-initialize the enemies to be used.
+func _initialize_enemies() -> void:
+	_enemies.clear()
+	var i = 0
+	for data in _enemy_data:
+		_enemies[i] = {
+			instances = []
+		}
+		for n in range(data.max_count):
+			_spawn_enemy(data, i)
+		i += 1
 
 func _find_enemy_spawn_location () -> Vector2:
 	if not player: return Vector2.ZERO
@@ -60,7 +72,15 @@ func _respawn_far_enemies () -> void:
 	for index in _enemies: 
 		var respawn :Array = []
 		for enemy in _enemies[index].instances:
-			var direction = enemy.global_position - player.global_position
+			if enemy == null or not enemy.is_inside_tree():
+				continue
+				
+			var direction = Vector2.ZERO
+			if player and player.is_inside_tree():
+				direction = enemy.global_position - player.global_position
+			else:
+				print("Player node is not valid or not in the tree.")
+				continue
 			if direction.length() < RESPAWN_DISTANCE: continue
 			respawn.append(enemy)
 		for enemy in respawn:

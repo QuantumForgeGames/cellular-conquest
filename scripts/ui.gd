@@ -13,6 +13,8 @@ extends CanvasLayer
 @onready var shoot_cooldown_timer: Timer = player.attack_timer
 @onready var shoot_ability_cooldown: TextureRect = $Control/MarginContainer/HBoxContainer/ShootAbility
 
+@onready var game_over: Control = $GameOver
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventManager.player_health_changed.connect(_on_player_health_changed)
@@ -43,6 +45,7 @@ func _on_player_health_changed(health: int):
 
 func _on_game_over():
 	process_mode = Node.PROCESS_MODE_DISABLED
+	game_over.visible = true
 
 func _on_skill_level_changed(skill: String, level: int):
 	var label = get_node("Control/MarginContainer/HBoxContainer/" + skill + "Ability" + "/Label")

@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwjmciynbpo5o"]
+
+[ext_resource type="Texture2D" uid="uid://d4jmqdn610n8b" path="res://assets/art/game_over/Game_Over_Text.png" id="1_d6lpc"]
+[ext_resource type="Texture2D" uid="uid://ci2didmiwshig" path="res://assets/art/game_over/Skull.png" id="2_ifwox"]
+[ext_resource type="Texture2D" uid="uid://bn2gdl1ubawbh" path="res://assets/art/game_over/Menu_Normal.png" id="3_1vgad"]
+[ext_resource type="Texture2D" uid="uid://btpnb8g2175up" path="res://assets/art/game_over/Menu_Hovered.png" id="4_yiuln"]
+[ext_resource type="Texture2D" uid="uid://b86gvtb02c2ov" path="res://assets/art/game_over/Retry_Normal.png" id="5_234a8"]
+[ext_resource type="Texture2D" uid="uid://knm1hl5kxv8r" path="res://assets/art/game_over/Retry_Hovered.png" id="6_gyxnh"]
+
+[sub_resource type="GDScript" id="GDScript_r411o"]
+script/source = "extends Control
+
+
+func _on_menu_button_pressed():
+	#SceneTransition.change_scene(\"res://scenes/menus/main_menu.tscn\")
+	#get_tree().change_scene_to_file(\"res://scenes/menus/blank.tscn\")
+	get_tree().change_scene_to_file(\"res://scenes/menus/blank.tscn\")
+
+
+func _on_retry_button_pressed():
+	print(\"TESTING\")
+	get_tree().reload_current_scene()
+"
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_r411o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.670588)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="TitleRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("1_d6lpc")
+stretch_mode = 2
+
+[node name="SkullRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ifwox")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 256
+
+[node name="MenuButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("3_1vgad")
+texture_hover = ExtResource("4_yiuln")
+
+[node name="RetryButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_234a8")
+texture_hover = ExtResource("6_gyxnh")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
