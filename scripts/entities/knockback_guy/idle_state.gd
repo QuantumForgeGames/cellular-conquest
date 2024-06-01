@@ -11,7 +11,7 @@ var rotation_speed = ROTATION_SPEED_MIN
 func enter() -> void:
 	entity.set_neutral_face()
 
-	get_tree().create_tween().set_loops().tween_callback(func():
+	self.create_tween().set_loops().tween_callback(func():
 		rotation_speed = randf_range(ROTATION_SPEED_MIN, ROTATION_SPEED_MAX) * [1, -1].pick_random()
 		await get_tree().create_timer(randf_range(0.5, 3.5)).timeout
 		rotation_speed = 0.0
