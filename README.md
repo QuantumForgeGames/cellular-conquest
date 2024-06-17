@@ -2,12 +2,15 @@
 
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Gameplay](#gameplay)
-- [Play the Game](#play-the-game)
-- [Controls](#controls)
-- [Development Setup](#development-setup)
-- [Credits](#credits)
+- [Cellular Conquest](#cellular-conquest)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Gameplay](#gameplay)
+  - [Play the Game](#play-the-game)
+  - [Controls](#controls)
+  - [Development Setup](#development-setup)
+    - [Pre-requisites](#pre-requisites)
+  - [Credits](#credits)
 
 ## Introduction
 **Cellular Conquest** is a game developed for the [🤖 Godot Jam 2024 - Cash Prizes](https://itch.io/jam/godot-jam-2024) over the course of 8 days. Built using the Godot Engine, it features a mix between Agario and Vampire Survivors.
@@ -27,12 +30,6 @@ You can play the game in the browser from [Cellular Conquest](https://quantum-fo
 ## Development Setup
 ### Pre-requisites
 Godot Engine (version 4.2.2)
-
-### Setting Up the Development Environment
-```
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-```
 
 ## Credits
 - Developers: JoshEthan, 20akshay00, qaptoR
